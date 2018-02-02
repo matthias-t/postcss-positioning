@@ -1,0 +1,36 @@
+{
+  "name": "postcss-position",
+  "version": "0.0.0",
+  "description": "PostCSS plugin that makes positioning simple",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "positioning",
+    "spacing"
+  ],
+  "author": "Matthias Totschnig <matthias@totschnig.org>",
+  "license": "MIT",
+  "repository": "matthias-t/postcss-position",
+  "bugs": {
+    "url": "https://github.com/matthias-t/postcss-position/issues"
+  },
+  "homepage": "https://github.com/matthias-t/postcss-position",
+  "dependencies": {
+    "postcss": "^6.0.16"
+  },
+  "devDependencies": {
+    "eslint": "^4.15.0",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^21.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
