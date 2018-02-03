@@ -7,7 +7,7 @@ const isPositionDecl = node => {
         ['horizontal', 'vertical', 'type'].some(prop => prop === node.prop);
 };
 
-export default postcss.plugin('postcss-position', opts => {
+export default postcss.plugin('postcss-positioning', opts => {
     opts = opts || {};
 
     // Work with options here
