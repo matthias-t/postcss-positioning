@@ -1,6 +1,7 @@
 .npmignore
 .gitignore
 .editorconfig
+.babelrc
 
 node_modules/
 npm-debug.log

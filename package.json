@@ -20,15 +20,25 @@
     "postcss": "^6.0.16"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
     "eslint": "^4.15.0",
     "eslint-config-postcss": "^2.0.2",
+    "eslint-plugin-import": "^2.8.0",
     "jest": "^21.0.0"
   },
   "scripts": {
     "test": "jest && eslint *.js"
   },
   "eslintConfig": {
-    "extends": "eslint-config-postcss/es5",
+    "extends": [
+      "eslint-config-postcss/es5",
+      "plugin:import/errors",
+      "plugin:import/warnings"
+    ],
+    "plugins": [
+      "import"
+    ],
     "env": {
       "jest": true
     }
