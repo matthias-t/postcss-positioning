@@ -1,6 +1,6 @@
 import postcss from 'postcss';
 import parse from '../js/parse';
-import type from '../js/type';
+import { type } from '../js/enum';
 
 describe('parse', () => {
 
