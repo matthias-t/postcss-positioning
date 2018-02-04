@@ -1,6 +1,6 @@
 import postcss from 'postcss';
 import parse from '../js/parse';
-import { type } from '../js/enum';
+import { type, direction } from '../js/enum';
 
 describe('parse', () => {
 
@@ -63,7 +63,7 @@ describe('parse', () => {
             height: '200px',
             bottom: '1s',
             align: {
-                direction: 'horizontal',
+                direction: direction.horizontal,
                 offset: '25px'
             }
         });
@@ -81,7 +81,7 @@ describe('parse', () => {
             height: '200px',
             bottom: '1s',
             align: {
-                direction: 'vertical',
+                direction: direction.vertical,
                 offset: '4vw'
             }
         });

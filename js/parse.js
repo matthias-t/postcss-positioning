@@ -1,6 +1,6 @@
 // Parses AST and returns a position object
 
-import { type, props } from './enum';
+import { type, props, direction } from './enum';
 
 export default (rule) => {
 
@@ -69,7 +69,7 @@ export default (rule) => {
                     );
                 }
                 result.align = {
-                    direction: decl.prop,
+                    direction: direction[decl.prop],
                     offset: value[4]
                 };
             }
