@@ -105,6 +105,36 @@ describe('parse', () => {
                 }
             `));
         }).toThrow(postcss.CssSyntaxError);
+
+        expect(() => {
+            parse(postcss.parse(`
+                a {
+                    type: fixed;
+                    horizontal: 1s 100px 1s align 1px;
+                    vertical: 1s 100px 1s;
+                }
+            `));
+        }).toThrow(postcss.CssSyntaxError);
+
+        expect(() => {
+            parse(postcss.parse(`
+                a {
+                    type: inline;
+                    horizontal: 1s 100px 1s align 1px;
+                    vertical: 1s 100px 1s;
+                }
+            `));
+        }).toThrow(postcss.CssSyntaxError);
+
+        expect(() => {
+            parse(postcss.parse(`
+                a {
+                    horizontal: 1s 100px 1s align 1px;
+                    vertical: 1s 100px 1s;
+                    type: sticky;
+                }
+            `));
+        }).toThrow(postcss.CssSyntaxError);
     });
 
     it('parses types', () => {

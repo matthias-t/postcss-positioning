@@ -12,6 +12,11 @@ export default (rule) => {
 
         // type
         if (decl.prop === 'type') {
+            if (result.align) {
+                throw rule.error(
+                    'Cannot align and be ' + result.type
+                );
+            }
             if (value.length > 1) {
                 throw decl.error(
                     'Cannot have multiple position types'
@@ -52,9 +57,14 @@ export default (rule) => {
                         value.length
                     );
                 }
-                if (result.align !== undefined) {
+                if (result.align) {
                     throw rule.error(
                         'Cannot align both horizontally and vertically'
+                    );
+                }
+                if (result.type) {
+                    throw rule.error(
+                        'Cannot align and be ' + result.type
                     );
                 }
                 if (value.length === 4) {
