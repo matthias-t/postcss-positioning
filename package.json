@@ -27,6 +27,10 @@
     "eslint-plugin-import": "^2.8.0",
     "jest": "^21.0.0"
   },
+  "peerDependencies": {
+    "postcss-normalize": "^4.0.0",
+    "postcss-calc": "^6.0.1"
+  },
   "scripts": {
     "test": "jest && eslint *.js"
   },
