@@ -1,5 +1,4 @@
 import postcss from 'postcss';
-import parse from './js/parse.js';
 import process from './js/process.js';
 
 const isPositionDecl = node => {
@@ -12,17 +11,13 @@ export default postcss.plugin('postcss-positioning', opts => {
 
     // Work with options here
 
-    return (root, result) => {
+    return (root) => {
 
         root.walkRules( rule => {
 
-            if (!rule.nodes.some(isPositionDecl)) {
-                return;
+            if (rule.nodes.some(isPositionDecl)) {
+                rule.replaceWith(process(rule));
             }
-
-            const position = parse(rule);
-            const ast = process(position);
-            rule.replaceWith(ast);
         });
     };
 });
