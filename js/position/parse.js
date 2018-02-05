@@ -1,10 +1,14 @@
 // Parses AST and returns a position object
 
-import { type, props, direction } from './enum';
+import Position from './position';
+import { type, lengths, direction } from '../enum';
 
 export default (rule) => {
 
-    const result = {};
+    const result = {
+        horizontal: {},
+        vertical: {}
+    };
 
     rule.walkDecls( decl => {
 
@@ -30,11 +34,11 @@ export default (rule) => {
             result.type = type[value[0]];
 
         // horizontal, vertical
-        } else if (props.hasOwnProperty(decl.prop)) {
+        } else if (direction.hasOwnProperty(decl.prop)) {
             if (value.length < 3) {
                 throw decl.error(
                     'Must have at least three values: ' +
-                    props[decl.prop].join()
+                    direction.join()
                 );
             }
             if (result.type !== type.inline &&
@@ -46,7 +50,7 @@ export default (rule) => {
             }
 
             value.slice(0, 3).forEach( (element, index) => {
-                result[props[decl.prop][index]] = element;
+                result[decl.prop][lengths[index]] = element;
             });
 
             // align
@@ -86,5 +90,5 @@ export default (rule) => {
         }
     });
 
-    return result;
+    return new Position(result);
 };

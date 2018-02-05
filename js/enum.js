@@ -9,15 +9,8 @@ export const direction = {
     vertical: 2
 };
 
-export const props = {
-    horizontal: [
-        'right',
-        'width',
-        'left'
-    ],
-    vertical: [
-        'top',
-        'height',
-        'bottom'
-    ]
-};
+export const lengths = [
+    'before',
+    'size',
+    'after'
+];
