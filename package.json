@@ -32,7 +32,7 @@
     "postcss-calc": "^6.0.1"
   },
   "scripts": {
-    "test": "jest && eslint *.js"
+    "test": "jest --verbose & eslint *.js"
   },
   "eslintConfig": {
     "extends": [
