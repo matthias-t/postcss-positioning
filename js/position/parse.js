@@ -1,6 +1,7 @@
 // Parses AST and returns a position object
 
 import Position from './position';
+import { isStretch } from './stretch';
 import { type, lengths, direction } from '../enum';
 
 export default (rule) => {
@@ -42,8 +43,7 @@ export default (rule) => {
                 );
             }
             if (result.type !== type.inline &&
-                value.every(element => element.slice(-1) !== 's')) {
-                // This assumes that there is no CSS unit ending with `s`
+                value.every(element => !isStretch(element))) {
                 throw decl.error(
                     'Must have at least one stretch value'
                 );
