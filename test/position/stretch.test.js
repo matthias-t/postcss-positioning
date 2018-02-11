@@ -1,3 +1,4 @@
+import Position from '../../js/position/index';
 import { isStretch, stretchValue } from '../../js/position/stretch';
 
 describe('isStretch', () => {
@@ -29,5 +30,59 @@ describe('stretchValue', () => {
     it('throws errors for non-stretch lengths', () => {
         expect(() => stretchValue('34px')).toThrow();
         expect(() => stretchValue('34abs')).toThrow();
+    });
+});
+
+// Complex calc expressions that can be simplified are OK here
+// Because postcss-calc is supposed to simplify them
+describe('stretch', () => {
+
+    it('transforms stretch values into calc expressions', () => {
+        expect(new Position({
+            horizontal: {
+                before: '10px',
+                size: '1s',
+                after: '10em'
+            },
+            vertical: {
+                before: '1s',
+                size: '10vw',
+                after: '1s'
+            }
+        }).stretch()).toEqual(new Position({
+            horizontal: {
+                before: '10px',
+                size: 'calc((99.9% - (10px + 10em)) * 1 / (1))',
+                after: '10em'
+            },
+            vertical: {
+                before: 'calc((99.9% - (10vw)) * 1 / (1 + 1))',
+                size: '10vw',
+                after: 'calc((99.9% - (10vw)) * 1 / (1 + 1))'
+            }
+        }));
+        expect(new Position({
+            horizontal: {
+                before: '1s',
+                size: '1s',
+                after: '1s'
+            },
+            vertical: {
+                before: '3s',
+                size: '10vw',
+                after: '1s'
+            }
+        }).stretch()).toEqual(new Position({
+            horizontal: {
+                before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                size: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
+            },
+            vertical: {
+                before: 'calc((99.9% - (10vw)) * 3 / (3 + 1))',
+                size: '10vw',
+                after: 'calc((99.9% - (10vw)) * 1 / (3 + 1))'
+            }
+        }));
     });
 });
