@@ -2,10 +2,10 @@
 
 export default class Position {
 
-    constructor({ horizontal, vertical, align = undefined, type = undefined }) {
+    constructor({ horizontal, vertical, align, type }) {
         this.horizontal = horizontal;
         this.vertical = vertical;
-        this.type = type;
-        this.align = align;
+        if (align) this.align = align;
+        if (type) this.type = type;
     }
 }
