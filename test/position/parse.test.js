@@ -97,6 +97,28 @@ describe('parse', () => {
                 offset: '4vw'
             }
         });
+
+        expect(Position.parse(postcss.parse(`
+            a {
+                horizontal: 1s 200px 1s;
+                vertical: 5px 200px 22.7em align 0;
+            }
+        `))).toEqual({
+            horizontal: {
+                before: '1s',
+                size: '200px',
+                after: '1s'
+            },
+            vertical: {
+                before: '5px',
+                size: '200px',
+                after: '22.7em'
+            },
+            align: {
+                direction: direction.vertical,
+                offset: '0'
+            }
+        });
     });
 
     it('throws errors for invalid alignments', () => {
@@ -131,7 +153,7 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    type: inline;
+                    type: fixed;
                     horizontal: 1s 100px 1s align 1px;
                     vertical: 1s 100px 1s;
                 }
@@ -172,26 +194,6 @@ describe('parse', () => {
 
         expect(Position.parse(postcss.parse(`
             a {
-                type: inline;
-                horizontal: .3em 200px .3em;
-                vertical: 10px 200px 10px;
-            }
-        `))).toEqual({
-            type: type.inline,
-            horizontal: {
-                before: '.3em',
-                size: '200px',
-                after: '.3em'
-            },
-            vertical: {
-                before: '10px',
-                size: '200px',
-                after: '10px'
-            }
-        });
-
-        expect(Position.parse(postcss.parse(`
-            a {
                 type: sticky;
                 horizontal: 1s 200px 1s;
                 vertical: 1s 200px 1s;
@@ -227,7 +229,7 @@ describe('parse', () => {
             Position.parse(postcss.parse(
                 `
                 a {
-                    type: fixed inline;
+                    type: fixed sticky;
                     horizontal: 1s 200px 1s;
                     vertical: 1s 200px 1s;
                 }

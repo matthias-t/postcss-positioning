@@ -42,12 +42,6 @@ export default (rule) => {
                     direction.join()
                 );
             }
-            if (result.type !== type.inline &&
-                value.every(element => !isStretch(element))) {
-                throw decl.error(
-                    'Must have at least one stretch value'
-                );
-            }
 
             value.slice(0, 3).forEach( (element, index) => {
                 result[decl.prop][lengths[index]] = element;
@@ -86,6 +80,11 @@ export default (rule) => {
                     direction: direction[decl.prop],
                     offset: value[4]
                 };
+            } else if (value.every(element => !isStretch(element))) {
+                throw decl.error(
+                    'Must have at least one stretch value ' +
+                    'when not specifying align'
+                );
             }
         }
     });
