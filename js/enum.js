@@ -1,6 +1,6 @@
 export const type = {
-    fixed: 1,
-    sticky: 2
+    fixed: 'fixed',
+    sticky: 'sticky'
 };
 
 export const direction = {

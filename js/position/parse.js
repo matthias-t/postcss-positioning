@@ -19,7 +19,7 @@ export default (rule) => {
         if (decl.prop === 'type') {
             if (result.align) {
                 throw rule.error(
-                    'Cannot align and be ' + result.type
+                    'Cannot align and be ' + value[0]
                 );
             }
             if (value.length > 1) {
@@ -38,8 +38,8 @@ export default (rule) => {
         } else if (direction.hasOwnProperty(decl.prop)) {
             if (value.length < 3) {
                 throw decl.error(
-                    'Must have at least three values: ' +
-                    direction.join()
+                    'Must have at least 3 values: ' +
+                    '`before`, `size` and `after`'
                 );
             }
 
@@ -51,7 +51,7 @@ export default (rule) => {
             if (value.length > 3) {
                 if (value[3] !== 'align') {
                     throw decl.error(
-                        'Not specifying `align`, expected 3 values, got' +
+                        'Not specifying `align`, expected 3 values, got ' +
                         value.length
                     );
                 }
