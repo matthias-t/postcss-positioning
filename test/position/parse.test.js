@@ -32,7 +32,7 @@ describe('parse', () => {
                     vertical: 1s 10vw 1s;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Not specifying `align`, expected 3 values, got 4');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -41,7 +41,7 @@ describe('parse', () => {
                     vertical: 1s;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Must have at least 3 values');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -50,7 +50,7 @@ describe('parse', () => {
                     vertical: 1s 10vw 1s;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Must have at least one stretch value');
     });
 
     it('parses alignments', () => {
@@ -129,7 +129,7 @@ describe('parse', () => {
                     vertical: 1s 200px 1s;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Expected a single align offset, got 2 values');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -138,7 +138,7 @@ describe('parse', () => {
                     vertical: 1s 100px 1s align 20px;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Cannot align both horizontally and vertically');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -148,17 +148,7 @@ describe('parse', () => {
                     vertical: 1s 100px 1s;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
-
-        expect(() => {
-            Position.parse(postcss.parse(`
-                a {
-                    type: fixed;
-                    horizontal: 1s 100px 1s align 1px;
-                    vertical: 1s 100px 1s;
-                }
-            `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Cannot align and be fixed');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -168,7 +158,7 @@ describe('parse', () => {
                     type: sticky;
                 }
             `));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Cannot align and be sticky');
     });
 
     it('parses types', () => {
@@ -224,7 +214,7 @@ describe('parse', () => {
                 }
                 `
             ));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Unknown position type `abc`');
         expect(() => {
             Position.parse(postcss.parse(
                 `
@@ -235,6 +225,6 @@ describe('parse', () => {
                 }
                 `
             ));
-        }).toThrow(postcss.CssSyntaxError);
+        }).toThrow('Cannot have multiple position types');
     });
 });
