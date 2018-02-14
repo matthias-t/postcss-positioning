@@ -1,4 +1,4 @@
-// Parses AST and returns a position object
+// Parses AST and returns a position object while removing positioning rules
 
 import Position from './position';
 import { isStretch } from './stretch';
@@ -33,6 +33,7 @@ export default (rule) => {
                 );
             }
             result.type = type[value[0]];
+            decl.remove();
 
         // horizontal, vertical
         } else if (direction.hasOwnProperty(decl.prop)) {
@@ -86,6 +87,8 @@ export default (rule) => {
                     'when not specifying align'
                 );
             }
+
+            decl.remove();
         }
     });
 
