@@ -4,8 +4,20 @@ export const type = {
 };
 
 export const direction = {
-    horizontal: 1,
-    vertical: 2
+    horizontal: {
+        prop: 'horizontal',
+        display: 'inline-block',
+        before: 'left',
+        size: 'width',
+        after: 'right'
+    },
+    vertical: {
+        prop: 'vertical',
+        display: 'block',
+        before: 'top',
+        size: 'height',
+        after: 'bottom'
+    }
 };
 
 export const lengths = [
