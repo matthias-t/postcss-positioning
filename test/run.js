@@ -1,3 +1,5 @@
+// Helps testing the plugin as a whole
+
 import postcss from 'postcss';
 import plugin from '../';
 
