@@ -1,5 +1,6 @@
 import Position from '../../js/position/index';
 import { isStretch, stretchValue } from '../../js/position/stretch';
+import { direction } from '../../js/enum';
 
 describe('isStretch', () => {
 
@@ -82,6 +83,102 @@ describe('stretch', () => {
                 before: 'calc((99.9% - (10vw)) * 3 / (3 + 1))',
                 size: '10vw',
                 after: 'calc((99.9% - (10vw)) * 1 / (3 + 1))'
+            }
+        }));
+    });
+
+    it('handles alignments correctly', () => {
+        expect(new Position({
+            horizontal: {
+                before: '1s',
+                size: '1s',
+                after: '1s'
+            },
+            vertical: {
+                before: '10px',
+                size: '10vw',
+                after: '4em'
+            },
+            align: {
+                direction: direction.vertical,
+                offset: '2px'
+            }
+        }).stretch()).toEqual(new Position({
+            horizontal: {
+                before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                size: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
+            },
+            vertical: {
+                before: '10px',
+                size: '10vw',
+                after: '4em'
+            },
+            align: {
+                direction: direction.vertical,
+                offset: '2px'
+            }
+        }));
+        expect(new Position({
+            vertical: {
+                before: '1s',
+                size: '1s',
+                after: '1s'
+            },
+            horizontal: {
+                before: '10px',
+                size: '10vw',
+                after: '4em'
+            },
+            align: {
+                direction: direction.horizontal,
+                offset: '2px'
+            }
+        }).stretch()).toEqual(new Position({
+            vertical: {
+                before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                size: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
+            },
+            horizontal: {
+                before: '10px',
+                size: '10vw',
+                after: '4em'
+            },
+            align: {
+                direction: direction.horizontal,
+                offset: '2px'
+            }
+        }));
+        expect(new Position({
+            horizontal: {
+                before: '1s',
+                size: '1s',
+                after: '1s'
+            },
+            vertical: {
+                before: '3s',
+                size: '10vw',
+                after: '1s'
+            },
+            align: {
+                direction: direction.vertical,
+                offset: '2px'
+            }
+        }).stretch()).toEqual(new Position({
+            horizontal: {
+                before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                size: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
+                after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
+            },
+            vertical: {
+                before: 'calc((99.9% - (10vw)) * 3 / (3 + 1))',
+                size: '10vw',
+                after: 'calc((99.9% - (10vw)) * 1 / (3 + 1))'
+            },
+            align: {
+                direction: direction.vertical,
+                offset: '2px'
             }
         }));
     });
