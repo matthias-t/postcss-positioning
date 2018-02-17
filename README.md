@@ -49,35 +49,34 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
 
 ## Table of contents
 
-#### 0 &nbsp; PostCSS-Positioning
- &nbsp; 0.1 &nbsp;Why? <br>
- &nbsp; 0.2 &nbsp;Table of contents
+#### 0 &nbsp; [PostCSS-Positioning](#postcss-positioning----)
+ &nbsp; 0.1 &nbsp;[Why?](#why-) <br>
+ &nbsp; 0.2 &nbsp;[Table of contents](#table-of-contents)
 
-#### 1 &nbsp; Syntax
- &nbsp; 1.1 &nbsp;*Example:* Centering stuff <br>
- &nbsp; 1.2 &nbsp;Basic syntax <br>
- &nbsp; 1.3 &nbsp;Stretch units <br>
- &nbsp; 1.4 &nbsp;Padding
+#### 1 &nbsp; [Syntax](#1--syntax-1)
+ &nbsp; 1.1 &nbsp;[*Example:* Centering stuff](#11-example-centering-stuff) <br>
+ &nbsp; 1.2 &nbsp;[Basic syntax](#12-basic-syntax) <br>
+ &nbsp; 1.3 &nbsp;[Stretch units](#13-stretch-units) <br>
+ &nbsp; 1.4 &nbsp;[Padding](#14-padding)
 
-#### 2 &nbsp;`align`
- &nbsp; 2.1 &nbsp;*Example:* Aligning children <br>
- &nbsp; 2.2 &nbsp;The `align` keyword
+#### 2 &nbsp;[`align`](#2--align)
+ &nbsp; 2.1 &nbsp;[*Example:* Aligning children](#21-example-aligning-children) <br>
+ &nbsp; 2.2 &nbsp;[The `align` keyword](#22-the-align-keyword)
 
-#### 3 &nbsp; The `_` Underscore
- &nbsp; 3.1 &nbsp;*Example:* Keeping aspect ratios <br>
- &nbsp; 3.2 &nbsp;*Example:* Matching content <br>
- &nbsp; 3.3 &nbsp;The `_` keyword
+#### 3 &nbsp; [The `_` Underscore](#3--the-_-underscore-1)
+ &nbsp; 3.1 &nbsp;[*Example:* Keeping aspect ratios](#31-example-keeping-aspect-ratios) <br>
+ &nbsp; 3.2 &nbsp;[*Example:* Matching content](#32-example-matching-content) <br>
+ &nbsp; 3.3 &nbsp;[The `_` keyword](#33-the-_-keyword)
 
-#### 4 &nbsp; Get Started
- &nbsp; 4.1 &nbsp;Installation <br>
- &nbsp; 4.2 &nbsp;Usage <br>
- &nbsp; 4.3 &nbsp;Options
+#### 4 &nbsp; [Getting Started](#4--getting-started-1)
+ &nbsp; 4.1 &nbsp;[Installation](#41-installation) <br>
+ &nbsp; 4.2 &nbsp;[Usage](#42-usage) <br>
+ &nbsp; 4.3 &nbsp;[Options](#43-options)
 
-#### 5 &nbsp; Community
- &nbsp; 5.1 &nbsp;Questions? Feedback? <br>
- &nbsp; 5.2 &nbsp;Acknowledgements <br>
- &nbsp; 5.3 &nbsp;Support PostCSS-Positioning
-
+#### 5 &nbsp; [Community](#5--community-1)
+ &nbsp; 5.1 &nbsp;[Questions? Feedback?](#51-questions-feedback) <br>
+ &nbsp; 5.2 &nbsp;[Acknowledgements](#52-acknowledgements) <br>
+ &nbsp; 5.3 &nbsp;[Support PostCSS-Positioning](#53-support-postcss-positioning)
 
 
 # 1 &nbsp; Syntax
