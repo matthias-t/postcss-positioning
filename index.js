@@ -16,7 +16,7 @@ export default postcss.plugin('postcss-positioning', opts => {
         root.walkRules( rule => {
 
             if (rule.nodes.some(isPositionDecl)) {
-                rule.replaceWith(process(rule));
+                process(rule);
             }
         });
     };

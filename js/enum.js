@@ -6,6 +6,7 @@ export const type = {
 export const direction = {
     horizontal: {
         prop: 'horizontal',
+        other: 'vertical',
         display: 'inline-block',
         before: 'left',
         size: 'width',
@@ -13,6 +14,7 @@ export const direction = {
     },
     vertical: {
         prop: 'vertical',
+        other: 'horizontal',
         display: 'block',
         before: 'top',
         size: 'height',
