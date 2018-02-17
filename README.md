@@ -1,27 +1,331 @@
-# PostCSS Position [![Build Status][ci-img]][ci]
+:warning: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
 
-[PostCSS] plugin that makes css positioning simple.
+# PostCSS-Positioning [![Build Status][ci-img]][ci] [![Coverage][cov-img]][cov] [![Maintainability][climate-img]][climate] [![Dependencies][deps-img]][deps]
 
-[PostCSS]: https://github.com/postcss/postcss
-[ci-img]:  https://travis-ci.org/matthias-t/postcss-positioning.svg
-[ci]:      https://travis-ci.org/matthias-t/postcss-positioning
+[![npm][npm-img]][npm]
+[![Downloads][dwn-img]][npm]
+[![Contributions Welcome][contrib-img]][contrib]
+[![Donate Coffee][donate-img]][coffee]
+
+Rethinking CSS positioning with [PostCSS].
+
+[PostCSS]:     https://github.com/postcss/postcss
+
+[ci-img]:      https://travis-ci.org/matthias-t/postcss-positioning.svg
+[ci]:          https://travis-ci.org/matthias-t/postcss-positioning
+
+[cov-img]:     https://img.shields.io/codeclimate/coverage/github/matthias-t/postcss-positioning.svg
+[cov]:         https://codeclimate.com/github/matthias-t/postcss-positioning
+
+[climate-img]: https://img.shields.io/codeclimate/maintainability/matthias-t/postcss-positioning.svg
+[climate]:     https://codeclimate.com/github/matthias-t/postcss-positioning
+
+[deps-img]:    https://david-dm.org/matthias-t/postcss-positioning.svg
+[deps]:        https://github.com/matthias-t/postcss-positioning/blob/master/package.json
+
+[npm-img]: 	   https://img.shields.io/npm/v/postcss-positioning.svg
+[dwn-img]:     https://img.shields.io/npm/dt/postcss-positioning.svg
+[npm]:         https://npmjs.org/package/postcss-positioning
+
+[contrib-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg
+[contrib]:     https://github.com/matthias-t/postcss-positioning/projects
+
+[donate-img]:  https://img.shields.io/badge/donate-coffee-brightgreen.svg
+[coffee]:      https://www.buymeacoffee.com/matthiast
+
+[why-img]:     https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg
+
+
+## Why? ![Start With Why][why-img]
+
+Positioning in CSS is painful.
+
+Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties with poor browser support.
+
+Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it.
+
+With PostCSS-Positioning, all you need is two properties, `horizontal` and `vertical`. It lets you use a coherent system where spacing and positioning are defined in a consistent way.
+
+
+## Table of contents
+
+#### 0 &nbsp; PostCSS-Positioning
+ &nbsp; 0.1 &nbsp;Why? <br>
+ &nbsp; 0.2 &nbsp;Table of contents
+
+#### 1 &nbsp; Syntax
+ &nbsp; 1.1 &nbsp;*Example:* Centering stuff <br>
+ &nbsp; 1.2 &nbsp;Basic syntax <br>
+ &nbsp; 1.3 &nbsp;Stretch units <br>
+ &nbsp; 1.4 &nbsp;Padding
+
+#### 2 &nbsp;`align`
+ &nbsp; 2.1 &nbsp;*Example:* Aligning children <br>
+ &nbsp; 2.2 &nbsp;The `align` keyword
+
+#### 3 &nbsp; The `_` Underscore
+ &nbsp; 3.1 &nbsp;*Example:* Keeping aspect ratios <br>
+ &nbsp; 3.2 &nbsp;*Example:* Matching content <br>
+ &nbsp; 3.3 &nbsp;The `_` keyword
+
+#### 4 &nbsp; Get Started
+ &nbsp; 4.1 &nbsp;Installation <br>
+ &nbsp; 4.2 &nbsp;Usage <br>
+ &nbsp; 4.3 &nbsp;Options
+
+#### 5 &nbsp; Community
+ &nbsp; 5.1 &nbsp;Questions? Feedback? <br>
+ &nbsp; 5.2 &nbsp;Acknowledgements <br>
+ &nbsp; 5.3 &nbsp;Support PostCSS-Positioning
+
+
+
+# 1 &nbsp; Syntax
+
+## 1.1 &nbsp;*Example:* Centering stuff
+
+#### Without postcss-positioning
+```css
+.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.parent * {
+  height: 200px;
+  width: 200px;
+}
+```
+#### With postcss-positioning
+```css
+.parent * {
+  horizontal: 1s 200px 1s;
+  vertical: 1s 200px 1s;
+}
+```
+We believe the childrens position should not be defined by style on the parent.
+
+
+## 1.2 &nbsp;Basic syntax
+
+> "*What are those values doing?*"
+
+The values specify space before, size, and space after on both axes.
 
 ```css
-.foo {
-    /* Input example */
+.element {
+  horizontal: right width left;
+  vertical: top height bottom;
 }
 ```
 
+
+## 1.3 &nbsp;Stretch units
+
+> "*Okay, but what is `1s`?*"
+
+Sometimes, you do not want to specify exact values for lengths, but you are interested in relations between them.
+
+That's essentially what happens when you center stuff — you don't care how long exactly the space before and after the element is. But you want to express that they should be equal.
+
+Want an element to take up two thirds of the space of its container to the right?
 ```css
-.foo {
-  /* Output example */
+.element {
+  horizontal: 1s 2s 0;
+  vertical: 0 1s 0;
 }
 ```
 
-## Usage
+When you specify lengths with stretch units, they will be processed last, and all the remaining space will be distributed between them.
 
+
+## 1.4 &nbsp;Padding
+
+> "*But I want my padding!*"
+
+Okay, let's recap. You have an element. There should be space between your element and the text inside it. So you want text inside it that has not the same size as your element.
+
+Sounds to me like you actually have two elements. Your container, and your text. And they have different sizes. And you want to cheat to have one less element in your markup.
+
+**We want to have two elements where you can see two elements.**
+
+#### Without postcss-positioning
+```html
+<div class="container">
+    I am a cheater. I am actually two elements.
+</div>
+```
+```css
+.container {
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+}
+```
+
+#### With postcss-positioning
+```html
+<div class="container">
+    <p>
+        I am explicitly a different size than my parent.
+    </p>
+</div>
+```
+```css
+.container {
+    horizontal: 0 200px 0;
+    vertical: 0 200px 0;
+}
+
+.container p {
+    horizontal: 20px 1s 20px;
+    vertical: 20px 1s 20px;
+}
+```
+
+You may think this is cluttered, or too explicit. You mustn't agree with this. We see two elements there. So we want to have two elements in the markup.
+
+
+# 2 &nbsp; `align`
+
+## 2.1 &nbsp;*Example:* Aligning children
+
+Let's say you're trying to vertically align elements one after another in a container. The first and last element should touch the container, but you want the elements to be spaced at 20px from each other.
+
+#### Without postcss-positioning
+```css
+.parent {
+  padding: -20px 0 -20px 0;
+}
+.parent * {
+  display: block;
+  margin: 20px 0 20px 0;
+  height: 200px;
+}
+```
+#### With postcss-positioning
+```css
+.parent * {
+  horizontal: 0 1s 0;
+  vertical: 0 200px 0 align 20px;
+}
+```
+
+Notice how the fact that the element's width takes up the whole space is explicit, while not cluttering things up.
+
+
+## 2.2 &nbsp;The `align` keyword
+
+> "*Fantastic, but what does `align` mean?*"
+
+Until now all elements we positioned were what you may know as absolutely positioned.
+
+Sometimes, you want to position children in a parent without knowing how much children there are or without positioning each one individually.
+
+That's were `align` comes in. It expresses that elements should follow one another — either vertically or horizontally — and lets you specify spacing between elements.
+
+:exclamation: When using align, you can either:
+- **use stretch lengths** to take up all the available space in the parent.
+- **use no stretch lengths** to take up just the space you need. The content may overflow.
+
+
+
+# 3 &nbsp; The `_` Underscore
+
+## 3.1 &nbsp;*Example:* Keeping aspect ratios
+
+When working with images most of the time you don't want to specify both width and height. You can skip a width or height with an underscore
+```css
+img {
+    horizontal: 0 1s 0;
+    vertical: 10px _ 1s;
+}
+```
+
+> *Note*: You still have to specify at least one stretch length
+
+## 3.2 &nbsp;*Example:* Matching content
+
+Let's suppose you are styling paragraphs in a container. You'll do something like:
+```css
+.container > p {
+    horizontal: 10px 1s 10px;
+    vertical: 10px 100px 10px align 5px;
+}
+```
+
+But wait, `100px` would give those paragraphs a fixed height. You want those paragraphs to be as long as the text they contain. Simply do:
+```css
+.container > p {
+    horizontal: 10px 1s 10px;
+    vertical: 10px _ 10px align 5px;
+}
+```
+
+## 3.3 &nbsp;The `_` keyword
+
+An underscore `_` expresses that a height or width should depend on the content. It is useful for working with images or paragraphs.
+
+
+# 4 &nbsp; Getting Started
+
+## 4.1 &nbsp;Installation
+```bash
+npm install postcss-positioning --save-dev
+```
+
+## 4.2 &nbsp;Usage
 ```js
-postcss([ require('postcss-positioning') ])
-```
+postcss = require('postcss')
+positioning = require('postcss-positioning')
 
+postcss([
+    positioning({
+        strict: true,
+        dev: false
+    })
+])
+```
 See [PostCSS] docs for examples for your environment.
+
+## 4.3 &nbsp;Options
+
+#### `strict`
+
+Warn when using properties that may interfere with PostCSS-Positioning like `width` and `height`.
+
+Error when using `align` without a offset
+
+#### `dev`
+
+Visualize how all elements are positioned on the page. Great for debugging or showcasing your work.
+
+# 5 &nbsp; Community
+
+## 5.1 &nbsp;Questions? Feedback?
+
+  - Check the [wiki][wiki]
+  - Search existing [issues][issues]
+  - Open an issue
+  - [Contact me][contact]
+
+[wiki]: https://github.com/matthias-t/postcss-positioning/wiki
+[issues]: https://github.com/matthias-t/postcss-positioning/issues
+[contact]: mailto:matthias@totschnig.org
+
+## 5.2 &nbsp;Acknowledgements
+
+An important part of this project is inspired by Kevin Lynagh's [talk][talk] at Deconstruct 2017. This plugin wouldn't exist without it.
+
+Thanks a lot to all contributors who helped improving this plugin.
+
+[talk]: https://www.deconstructconf.com/2017/kevin-lynagh-choosing-features
+
+## 5.3 &nbsp;Support Postcss-Positioning
+
+If this plugin is useful to you, please consider supporting its development.
+
+[![Buy me a Coffee][coffee-img]][coffee]
+
+[coffee-img]: https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
