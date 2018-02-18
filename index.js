@@ -8,6 +8,10 @@ const isPositionDecl = node => {
         ['horizontal', 'vertical', 'type'].some(prop => prop === node.prop);
 };
 
+const hasPositionDecl = rule => {
+    return rule.nodes.some(isPositionDecl);
+};
+
 export default postcss.plugin('postcss-positioning', opts => {
     opts = opts || {};
 
@@ -17,7 +21,7 @@ export default postcss.plugin('postcss-positioning', opts => {
 
         root.walkRules( rule => {
 
-            if (rule.nodes.some(isPositionDecl)) {
+            if (hasPositionDecl(rule)) {
                 process(rule);
             }
         });
