@@ -14,5 +14,5 @@ export default (rule) => {
         parseDecl(decl, result);
     });
 
-    return new Position(result);
+    return new Position(result).validate(rule);
 };
