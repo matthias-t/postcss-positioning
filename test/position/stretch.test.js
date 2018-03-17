@@ -99,10 +99,7 @@ describe('stretch', () => {
                 size: '10vw',
                 after: '4em'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '2px'
-            }
+            align: direction.vertical
         }).stretch()).toEqual(new Position({
             horizontal: {
                 before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
@@ -114,41 +111,32 @@ describe('stretch', () => {
                 size: '10vw',
                 after: '4em'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '2px'
-            }
+            align: direction.vertical
         }));
         expect(new Position({
+            horizontal: {
+                before: '10px',
+                size: '10vw',
+                after: '4em'
+            },
             vertical: {
                 before: '1s',
                 size: '1s',
                 after: '1s'
             },
+            align: direction.horizontal
+        }).stretch()).toEqual(new Position({
             horizontal: {
                 before: '10px',
                 size: '10vw',
                 after: '4em'
             },
-            align: {
-                direction: direction.horizontal,
-                offset: '2px'
-            }
-        }).stretch()).toEqual(new Position({
             vertical: {
                 before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
                 size: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
                 after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
             },
-            horizontal: {
-                before: '10px',
-                size: '10vw',
-                after: '4em'
-            },
-            align: {
-                direction: direction.horizontal,
-                offset: '2px'
-            }
+            align: direction.horizontal
         }));
         expect(new Position({
             horizontal: {
@@ -157,14 +145,11 @@ describe('stretch', () => {
                 after: '1s'
             },
             vertical: {
-                before: '3s',
+                before: '10px',
                 size: '10vw',
-                after: '1s'
+                after: '10px'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '2px'
-            }
+            align: direction.vertical
         }).stretch()).toEqual(new Position({
             horizontal: {
                 before: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))',
@@ -172,14 +157,11 @@ describe('stretch', () => {
                 after: 'calc((99.9% - 0) * 1 / (1 + 1 + 1))'
             },
             vertical: {
-                before: 'calc((99.9% - (10vw)) * 3 / (3 + 1))',
+                before: '10px',
                 size: '10vw',
-                after: 'calc((99.9% - (10vw)) * 1 / (3 + 1))'
+                after: '10px'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '2px'
-            }
+            align: direction.vertical
         }));
     });
 });

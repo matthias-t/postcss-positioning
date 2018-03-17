@@ -32,7 +32,7 @@ describe('parse', () => {
                     vertical: 1s 10vw 1s;
                 }
             `));
-        }).toThrow('Not specifying `align`, expected 3 values, got 4');
+        }).toThrow('Expected 3 values, got 4');
 
         expect(() => {
             Position.parse(postcss.parse(`
@@ -56,7 +56,7 @@ describe('parse', () => {
     it('parses alignments', () => {
         expect(Position.parse(postcss.parse(`
             a {
-                horizontal: 1s 200px 1s align 25px;
+                horizontal: 1s 200px 1s align;
                 vertical: 1s 200px 1s;
             }
         `))).toEqual({
@@ -70,16 +70,13 @@ describe('parse', () => {
                 size: '200px',
                 after: '1s'
             },
-            align: {
-                direction: direction.horizontal,
-                offset: '25px'
-            }
+            align: direction.horizontal
         });
 
         expect(Position.parse(postcss.parse(`
             a {
                 horizontal: 1s 200px 1s;
-                vertical: 1s 200px 1s align 4vw;
+                vertical: 1s 200px 1s align;
             }
         `))).toEqual({
             horizontal: {
@@ -92,16 +89,13 @@ describe('parse', () => {
                 size: '200px',
                 after: '1s'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '4vw'
-            }
+            align: direction.vertical
         });
 
         expect(Position.parse(postcss.parse(`
             a {
                 horizontal: 1s 200px 1s;
-                vertical: 5px 200px 22.7em align 0;
+                vertical: 5px 200px 22.7em align;
             }
         `))).toEqual({
             horizontal: {
@@ -114,10 +108,7 @@ describe('parse', () => {
                 size: '200px',
                 after: '22.7em'
             },
-            align: {
-                direction: direction.vertical,
-                offset: '0'
-            }
+            align: direction.vertical
         });
     });
 
@@ -125,17 +116,17 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 200px 1s align 1vw 10em;
+                    horizontal: 1s 200px 1s align 12px;
                     vertical: 1s 200px 1s;
                 }
             `));
-        }).toThrow('Expected a single align offset, got 2 values');
+        }).toThrow('Unexpected value after `align`');
 
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 100px 1s align 1px;
-                    vertical: 1s 100px 1s align 20px;
+                    horizontal: 1s 100px 1s align;
+                    vertical: 1s 100px 1s align;
                 }
             `));
         }).toThrow('Cannot align both horizontally and vertically');
@@ -144,7 +135,7 @@ describe('parse', () => {
             Position.parse(postcss.parse(`
                 a {
                     type: fixed;
-                    horizontal: 1s 100px 1s align 1px;
+                    horizontal: 1s 100px 1s align;
                     vertical: 1s 100px 1s;
                 }
             `));
@@ -153,7 +144,7 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 100px 1s align 1px;
+                    horizontal: 1s 100px 1s align;
                     vertical: 1s 100px 1s;
                     type: sticky;
                 }

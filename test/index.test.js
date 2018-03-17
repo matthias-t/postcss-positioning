@@ -23,22 +23,16 @@ describe('postcss-positioning', () => {
         return run(
 `a {
     vertical: 10px 1s 10px;
-    horizontal: 10px 70vw 10px align 2px;
+    horizontal: 25px 70vw 20px align;
 }`,
 `a {
     width: 70vw;
     height: calc((99.9% - (10px + 10px)) * 1 / (1));
     display: inline-block;
-    margin-left: calc(2px / 2);
-    margin-right: calc(2px / 2);
+    margin-left: 25px;
+    margin-right: 20px;
     margin-top: 10px;
     margin-bottom: 10px;
-}
-a:first-child {
-    margin-left: 10px;
-}
-a:last-child {
-    margin-right: 10px;
 }`,
         {});
     });
@@ -46,23 +40,17 @@ a:last-child {
     it('processes vertical alignments', () => {
         return run(
 `a {
-    vertical: 20px 100px 25px align 10px;
+    vertical: 20px 100px 25px align;
     horizontal: 10px 1s 10px
 }`,
 `a {
     width: calc((99.9% - (10px + 10px)) * 1 / (1));
     height: 100px;
     display: block;
-    margin-top: calc(10px / 2);
-    margin-bottom: calc(10px / 2);
+    margin-top: 20px;
+    margin-bottom: 25px;
     margin-left: 10px;
     margin-right: 10px
-}
-a:first-child {
-    margin-top: 20px
-}
-a:last-child {
-    margin-bottom: 25px
 }`,
         {});
     });
