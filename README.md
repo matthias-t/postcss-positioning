@@ -1,4 +1,4 @@
-:warning: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
+:warning: :construction: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
 
 # PostCSS-Positioning [![Build Status][ci-img]][ci] [![Coverage][cov-img]][cov] [![Maintainability][climate-img]][climate] [![Dependencies][deps-img]][deps]
 
@@ -40,7 +40,7 @@ Rethinking CSS positioning with [PostCSS].
 
 Positioning in CSS is painful.
 
-Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties with poor browser support.
+Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties.
 
 Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it.
 
@@ -91,14 +91,15 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
   align-items: center;
 }
 
-.parent * {
+.child {
   height: 200px;
   width: 200px;
 }
 ```
+Well, there's [lots of ways](https://stackoverflow.com/questions/19461521/how-to-center-an-element-horizontally-and-vertically).
 #### With postcss-positioning
 ```css
-.parent * {
+.child {
   horizontal: 1s 200px 1s;
   vertical: 1s 200px 1s;
 }
@@ -190,28 +191,25 @@ You may think this is cluttered, or too explicit. You mustn't agree with this. W
 
 ## 2.1 &nbsp;*Example:* Aligning children
 
-Let's say you're trying to vertically align elements one after another in a container. The first and last element should touch the container, but you want the elements to be spaced at 20px from each other.
+Let's say you're trying to vertically align elements one after another in a container. You also want an element to have a top margin of 20px.
 
 #### Without postcss-positioning
 ```css
-.parent {
-  padding: -20px 0 -20px 0;
-}
-.parent * {
+.child {
   display: block;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 0 0;
   height: 200px;
 }
 ```
 #### With postcss-positioning
 ```css
-.parent * {
+.child {
   horizontal: 0 1s 0;
-  vertical: 0 200px 0 align 20px;
+  vertical: 20px 200px 0 align;
 }
 ```
 
-Notice how the fact that the element's width takes up the whole space is explicit, while not cluttering things up.
+Notice how the fact that the element's width takes up the whole space is explicit. Also note that this is a pretty simple example, where vanilla CSS remains pretty much uncluttered. It would be less so if the element also had to be horizontally centered and take up half the space (`horizontal: 1s 2s 1s;`).
 
 
 ## 2.2 &nbsp;The `align` keyword
@@ -222,11 +220,9 @@ Until now all elements we positioned were what you may know as absolutely positi
 
 Sometimes, you want to position children in a parent without knowing how much children there are or without positioning each one individually.
 
-That's were `align` comes in. It expresses that elements should follow one another — either vertically or horizontally — and lets you specify spacing between elements.
+That's were `align` comes in. It expresses that elements should follow one another, either vertically or horizontally. The space before and space after the element turn into margins, so be careful: [they can cancel out](https://css-tricks.com/what-you-should-know-about-collapsing-margins/).
 
-:exclamation: When using align, you can either:
-- **use stretch lengths** to take up all the available space in the parent.
-- **use no stretch lengths** to take up just the space you need. The content may overflow.
+:warning: When using align, you **can't use stretch** lengths on the axis `align` is used on.
 
 
 
