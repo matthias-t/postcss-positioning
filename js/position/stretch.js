@@ -26,40 +26,36 @@ const addAll = (array) => {
 // Turn all stretch lengths into valid calc expressions
 export default function () {
 
-    let i = -1;
+    this.iterateDirections((dir, lengths) => {
 
-    [ this.horizontal, this.vertical ].forEach( lengths => {
-
-        i++;
-
-        const stretchValues = Object.values(lengths)
-            .filter(isStretch)
+        const stretchValues = lengths.filter(isStretch)
             .map(stretchValue);
         const totalStretch = addAll(stretchValues);
 
         if (totalStretch === undefined) {
-            if (this.align &&
-                this.align.direction ===
-                [direction.horizontal, direction.vertical][i]) {
+            if (this.isAlignedInDirection(dir)) {
                 return;
             } else {
                 throw new Error('No stretch value found');
             }
         }
 
-        const remainingValues = Object.values(lengths)
+        const remainingValues = lengths
             .filter(length => !isStretch(length));
         const totalRemaining = addAll(remainingValues) || '0';
 
-        Object.entries(lengths).forEach( entry => {
-            if (isStretch(entry[1])) {
-                lengths[entry[0]] = 'calc((99.9% - ' +
+        lengths.forEach( (length, i) => {
+            if (isStretch(length)) {
+                lengths[i] = 'calc((99.9% - ' +
                     totalRemaining + ') * ' +
-                    stretchValue(entry[1]) + ' / ' +
+                    stretchValue(length) + ' / ' +
                     totalStretch + ')';
                 // (100% - totalRemaining) * thisStretch / totalStretch
             }
         });
+
+        this.setDirection(dir, lengths);
     });
+
     return this;
 }

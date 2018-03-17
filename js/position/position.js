@@ -25,7 +25,15 @@ export default class Position {
         });
     }
 
+    setDirection(dir, lengths) {
+        this[dir.prop] = {
+            before: lengths[0],
+            size: lengths[1],
+            after: lengths[2]
+        };
+    }
+
     isAlignedInDirection(dir) {
-        return this.align && this.align.direction === dir;
+        return this.align && this.align === dir;
     }
 }
