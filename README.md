@@ -40,7 +40,7 @@ Rethinking CSS positioning with [PostCSS].
 
 Positioning in CSS is painful.
 
-Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties with poor browser support.
+Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties.
 
 Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it.
 
@@ -91,14 +91,15 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
   align-items: center;
 }
 
-.parent * {
+.child {
   height: 200px;
   width: 200px;
 }
 ```
+Well, there's [lots of ways](https://stackoverflow.com/questions/19461521/how-to-center-an-element-horizontally-and-vertically).
 #### With postcss-positioning
 ```css
-.parent * {
+.child {
   horizontal: 1s 200px 1s;
   vertical: 1s 200px 1s;
 }
@@ -197,7 +198,7 @@ Let's say you're trying to vertically align elements one after another in a cont
 .parent {
   padding: -20px 0 -20px 0;
 }
-.parent * {
+.child {
   display: block;
   margin: 20px 0 20px 0;
   height: 200px;
@@ -205,7 +206,7 @@ Let's say you're trying to vertically align elements one after another in a cont
 ```
 #### With postcss-positioning
 ```css
-.parent * {
+.child {
   horizontal: 0 1s 0;
   vertical: 0 200px 0 align 20px;
 }
