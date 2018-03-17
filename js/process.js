@@ -17,39 +17,25 @@ export default (rule) => {
 
     if (position.align) {
 
-        const halfOffset = 'calc(' + position.align.offset + ' / 2)';
-
         rule.append({
             prop: 'display',
-            value: position.align.direction.display
+            value: position.align.display
         });
 
         rule.append({
-            prop: 'margin-' + position.align.direction.before,
-            value: halfOffset
+            prop: 'margin-' + position.align.before,
+            value: position[position.align.prop].before
         }, {
-            prop: 'margin-' + position.align.direction.after,
-            value: halfOffset
-        });
-
-        rule.after({
-            selector: rule.selector + ':first-child'
-        }).next().append({
-            prop: 'margin-' + position.align.direction.before,
-            value: position[position.align.direction.prop].before
-        }).after({
-            selector: rule.selector + ':last-child'
-        }).next().append({
-            prop: 'margin-' + position.align.direction.after,
-            value: position[position.align.direction.prop].after
+            prop: 'margin-' + position.align.after,
+            value: position[position.align.prop].after
         });
 
         rule.append({
-            prop: 'margin-' + direction[position.align.direction.other].before,
-            value: position[position.align.direction.other].before
+            prop: 'margin-' + direction[position.align.other].before,
+            value: position[position.align.other].before
         }, {
-            prop: 'margin-' + direction[position.align.direction.other].after,
-            value: position[position.align.direction.other].after
+            prop: 'margin-' + direction[position.align.other].after,
+            value: position[position.align.other].after
         });
 
     } else {
