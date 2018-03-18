@@ -1,11 +1,16 @@
 :warning: :construction: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
 
-# PostCSS-Positioning [![Build Status][ci-img]][ci] [![Coverage][cov-img]][cov] [![Maintainability][climate-img]][climate] [![Dependencies][deps-img]][deps]
+<h1 align="center" id="title">
+    <img src="logo.svg" width="600px" align="center"></img>
+</h1>
 
-[![npm][npm-img]][npm]
-[![Downloads][dwn-img]][npm]
-[![Contributions Welcome][contrib-img]][contrib]
-[![Donate Coffee][donate-img]][coffee]
+[![Build Status][ci-img]][ci] 
+[![Coverage][cov-img]][cov] 
+[![Maintainability][climate-img]][climate] 
+[![Dependencies][deps-img]][deps] 
+[![npm][npm-img]][npm] 
+[![Downloads][dwn-img]][npm] 
+[![Contributions Welcome][contrib-img]][contrib] 
 
 Rethinking CSS positioning with [PostCSS].
 
@@ -49,7 +54,7 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
 
 ## Table of contents
 
-#### 0 &nbsp; [PostCSS-Positioning](#postcss-positioning----)
+#### 0 &nbsp; [PostCSS-Positioning](#title)
  &nbsp; 0.1 &nbsp;[Why?](#why-) <br>
  &nbsp; 0.2 &nbsp;[Table of contents](#table-of-contents)
 
