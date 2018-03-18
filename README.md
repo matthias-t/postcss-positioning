@@ -161,9 +161,12 @@ Sounds to me like you actually have two elements. Your container, and your text.
 **We want to have two elements where you can see two elements.**
 
 #### Without postcss-positioning
+
+<img alt="element with padding" src="img/illustration4.svg" width="50%">
+
 ```html
 <div class="container">
-    I am a cheater. I am actually two elements.
+    I am a cheater. I should be two elements.
 </div>
 ```
 ```css
@@ -175,6 +178,10 @@ Sounds to me like you actually have two elements. Your container, and your text.
 ```
 
 #### With postcss-positioning
+
+<img alt="p inside div with margin" src="img/illustration3.svg" width="50%">
+
+
 ```html
 <div class="container">
     <p>
