@@ -137,6 +137,9 @@ Sometimes, you do not want to specify exact values for lengths, but you are inte
 That's essentially what happens when you center stuff — you don't care how long exactly the space before and after the element is. But you want to express that they should be equal.
 
 Want an element to take up two thirds of the space of its container to the right?
+
+<img alt="element taking up two thirds of its container to the right" src="img/illustration2.svg" width="50%">
+
 ```css
 .element {
   horizontal: 1s 2s 0;
