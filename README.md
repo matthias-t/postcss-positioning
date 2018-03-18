@@ -88,6 +88,8 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
 
 ## 1.1 &nbsp;*Example:* Centering stuff
 
+<img alt="centered element" src="img/illustration1.svg" width="50%">
+
 #### Without postcss-positioning
 ```css
 .parent {
