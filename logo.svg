@@ -1,0 +1,8 @@
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve">
+  <text x="50" y="40" font-size="30" font-family="Josefin Sans" fill="black" alignment-baseline="middle">postcss</text>
+  <text x="115" y="90" font-size="80" font-family="Josefin Sans" fill="black" alignment-baseline="middle">positioning</text>
+  <rect x="50" y="80" width="3" height="20" stroke="black" stroke-width="0.5" fill="black"></rect>
+  <rect x="100" y="70" width="3" height="40" stroke="black" stroke-width="0.5" fill="black"></rect>
+  <polyline stroke="black" fill="none" stroke-width="3" stroke-linejoin="round" stroke-linecap="round" points="52,90 55,85 65,95 75,85 85,95 95,85 100,90"></polyline>
+</svg>
