@@ -1,16 +1,16 @@
 :warning: :construction: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
 
 <h1 align="center" id="title">
-    <img src="logo.svg" width="600px" align="center"></img>
+    <img src="img/logo.svg" width="600px" align="center"></img>
 </h1>
 
-[![Build Status][ci-img]][ci] 
-[![Coverage][cov-img]][cov] 
-[![Maintainability][climate-img]][climate] 
-[![Dependencies][deps-img]][deps] 
-[![npm][npm-img]][npm] 
-[![Downloads][dwn-img]][npm] 
-[![Contributions Welcome][contrib-img]][contrib] 
+[![Build Status][ci-img]][ci]
+[![Coverage][cov-img]][cov]
+[![Maintainability][climate-img]][climate]
+[![Dependencies][deps-img]][deps]
+[![npm][npm-img]][npm]
+[![Downloads][dwn-img]][npm]
+[![Contributions Welcome][contrib-img]][contrib]
 
 Rethinking CSS positioning with [PostCSS].
 
