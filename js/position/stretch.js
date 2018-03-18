@@ -1,5 +1,3 @@
-import { direction } from '../enum';
-
 // Tell if `length` is a stretch length
 export const isStretch = (length) => {
     const unit = length.match(/[A-z]+/);
@@ -26,14 +24,14 @@ const addAll = (array) => {
 // Turn all stretch lengths into valid calc expressions
 export default function () {
 
-    this.iterateDirections((dir, lengths) => {
+    this.iterateDirections((direction, lengths) => {
 
         const stretchValues = lengths.filter(isStretch)
             .map(stretchValue);
         const totalStretch = addAll(stretchValues);
 
         if (totalStretch === undefined) {
-            if (this.isAlignedInDirection(dir)) {
+            if (this.isAlignedInDirection(direction)) {
                 return;
             } else {
                 throw new Error('No stretch value found');
@@ -54,7 +52,7 @@ export default function () {
             }
         });
 
-        this.setDirection(dir, lengths);
+        this.setDirection(direction, lengths);
     });
 
     return this;
