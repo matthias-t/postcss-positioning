@@ -154,23 +154,23 @@ When you specify lengths with stretch units, they will be processed last, and al
 
 > "*But I want my padding!*"
 
-Okay, let's recap. You have an element. There should be space between your element and the text inside it. So you want text inside it that has not the same size as your element.
+Let's say you have an element. There should be space between your element and the text inside it. So you want text inside it that has not the same size as your element.
 
-Sounds to me like you actually have two elements. Your container, and your text. And they have different sizes. And you want to cheat to have one less element in your markup.
+Sounds to me like you actually have two elements. Your parent, and your text. And they have different sizes. And you want to 'cheat' to have one less element in your markup.
 
 **We want to have two elements where you can see two elements.**
 
 #### Without postcss-positioning
 
-<img alt="element with padding" src="img/illustration4.svg" width="50%">
+<img alt="p with padding" src="img/illustration4.svg" width="50%">
 
 ```html
-<div class="container">
+<div class="parent">
     I am a cheater. I should be two elements.
 </div>
 ```
 ```css
-.container {
+.parent {
     width: 200px;
     height: 200px;
     padding: 20px;
@@ -183,25 +183,25 @@ Sounds to me like you actually have two elements. Your container, and your text.
 
 
 ```html
-<div class="container">
+<div class="parent">
     <p>
         I am explicitly a different size than my parent.
     </p>
 </div>
 ```
 ```css
-.container {
+.parent {
     horizontal: 0 200px 0;
     vertical: 0 200px 0;
 }
 
-.container p {
+.parent p {
     horizontal: 20px 1s 20px;
     vertical: 20px 1s 20px;
 }
 ```
 
-You may think this is cluttered, or too explicit. You mustn't agree with this. We see two elements there. So we want to have two elements in the markup.
+You may think this is cluttered, or too explicit. You mustn't agree with this. We see two elements there, so we want to have two elements in the markup.
 
 
 # 2 &nbsp; `align`
