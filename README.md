@@ -1,7 +1,7 @@
 :warning: :construction: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
 
 <h1 align="center" id="title">
-    <img src="img/logo.svg" width="600px" align="center"></img>
+    <img src="img/logo.png" width="600px" align="center"></img>
 </h1>
 
 [![Build Status][ci-img]][ci]
