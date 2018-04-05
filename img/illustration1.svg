@@ -1002,29 +1002,35 @@
            sodipodi:nodetypes="cccc" />
       </g>
     </g>
-    <flowRoot
+    <text
        xml:space="preserve"
-       id="flowRoot989"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       transform="matrix(0.26458333,0,0,0.26458333,-334.64149,-54.841163)"><flowRegion
-         id="flowRegion991"
-         style="fill:#000000;fill-opacity:1"><rect
-           id="rect993"
-           width="373.35239"
-           height="98.994949"
-           x="599.62653"
-           y="888.28259"
-           style="fill:#000000;fill-opacity:1" /></flowRegion><flowPara
-         id="flowPara995">.child</flowPara></flowRoot>    <flowRoot
-       transform="matrix(0.26458333,0,0,0.26458333,-452.88153,11.762403)"
-       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
-       id="flowRoot1003"
-       xml:space="preserve"><flowRegion
-         id="flowRegion999"><rect
-           y="888.28259"
-           x="599.62653"
-           height="98.994949"
-           width="373.35239"
-           id="rect997" /></flowRegion><flowPara
-         id="flowPara1009">.parent</flowPara></flowRoot>  </g>
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-175.99019"
+       y="189.83926"
+       id="text3289"><tspan
+         sodipodi:role="line"
+         x="-175.99019"
+         y="189.83926"
+         id="tspan3287"
+         style="stroke-width:0.26458332"><tspan
+           x="-175.99019"
+           y="189.83926"
+           id="tspan3285"
+           style="stroke-width:0.26458332">.child</tspan></tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-294.23022"
+       y="256.44284"
+       id="text3283"><tspan
+         sodipodi:role="line"
+         x="-294.23022"
+         y="256.44284"
+         id="tspan3281"
+         style="stroke-width:0.26458332"><tspan
+           x="-294.23022"
+           y="256.44284"
+           id="tspan3279"
+           style="stroke-width:0.26458332">.parent</tspan></tspan></text>
+  </g>
 </svg>
