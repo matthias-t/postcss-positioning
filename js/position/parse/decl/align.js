@@ -12,10 +12,17 @@ export default (decl, value, result) => {
             'Cannot align both horizontally and vertically'
         );
     }
-    if (value.length > 4) {
+    if (value.length !== 4 && value.length !== 6) {
         throw decl.error(
-            'Unexpected value after `align`'
+            'Expected 0 or 2 values after `align`, got ' +
+            (value.length - 4)
         );
     }
     result.align = direction[decl.prop];
+    if (value.length === 6) {
+        result.margins = {
+            first: value[4],
+            last: value[5]
+        };
+    }
 };

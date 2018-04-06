@@ -4,11 +4,12 @@ import { direction } from '../enum';
 
 export default class Position {
 
-    constructor({ horizontal, vertical, align, type }) {
+    constructor({ horizontal, vertical, align, type, margins }) {
         this.horizontal = horizontal;
         this.vertical = vertical;
         if (align) this.align = align;
         if (type) this.type = type;
+        if (margins) this.margins = margins;
     }
 
     iterateDirections(callback) {
