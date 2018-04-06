@@ -112,6 +112,54 @@ describe('parse', () => {
         });
     });
 
+    it('parses alignments with first and last margin shortcuts', () => {
+        expect(Position.parse(postcss.parse(`
+            a {
+                horizontal: 10px 200px 10px align 2px 2px;
+                vertical: 1s 200px 1s;
+            }
+        `))).toEqual({
+            horizontal: {
+                before: '10px',
+                size: '200px',
+                after: '10px'
+            },
+            vertical: {
+                before: '1s',
+                size: '200px',
+                after: '1s'
+            },
+            margins: {
+                first: '2px',
+                last: '2px'
+            },
+            align: direction.horizontal
+        });
+
+        expect(Position.parse(postcss.parse(`
+            a {
+                vertical: 1s 2em 10px;
+                horizontal: 1px 200px 2px align 6em 1%;
+            }
+        `))).toEqual({
+            horizontal: {
+                before: '1px',
+                size: '200px',
+                after: '2px'
+            },
+            vertical: {
+                before: '1s',
+                size: '2em',
+                after: '10px'
+            },
+            margins: {
+                first: '6em',
+                last: '1%'
+            },
+            align: direction.horizontal
+        });
+    });
+
     it('throws errors for invalid alignments', () => {
         expect(() => {
             Position.parse(postcss.parse(`
@@ -120,7 +168,16 @@ describe('parse', () => {
                     vertical: 1s 200px 1s;
                 }
             `));
-        }).toThrow('Unexpected value after `align`');
+        }).toThrow('Expected 0 or 2 values after `align`, got 1');
+
+        expect(() => {
+            Position.parse(postcss.parse(`
+                a {
+                    horizontal: 10px 200px 10px align 12px 1% 2em;
+                    vertical: 1s 200px 1s;
+                }
+            `));
+        }).toThrow('Expected 0 or 2 values after `align`, got 3');
 
         expect(() => {
             Position.parse(postcss.parse(`
