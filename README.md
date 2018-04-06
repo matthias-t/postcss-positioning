@@ -66,7 +66,8 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
 
 #### 2 &nbsp;[`align`](#2--align)
  &nbsp; 2.1 &nbsp;[*Example:* Aligning children](#21-example-aligning-children) <br>
- &nbsp; 2.2 &nbsp;[The `align` keyword](#22-the-align-keyword)
+ &nbsp; 2.2 &nbsp;[The `align` keyword](#22-the-align-keyword) <br>
+ &nbsp; 2.3 &nbsp;[Spacing the first and last children](#23-spacing-the-first-and-last-children)
 
 #### 3 &nbsp; [The `_` Underscore](#3--the-_-underscore-1)
  &nbsp; 3.1 &nbsp;[*Example:* Keeping aspect ratios](#31-example-keeping-aspect-ratios) <br>
@@ -208,7 +209,7 @@ You may think this is cluttered, or too explicit. You mustn't agree with this. W
 
 ## 2.1 &nbsp;*Example:* Aligning children
 
-Let's say you're trying to vertically align elements one after another in a container. You also want an element to have a top margin of 20px.
+Let's say you're trying to vertically align elements one after another in a container. You also want each element to have a top margin of 20px.
 
 #### Without postcss-positioning
 ```css
@@ -239,7 +240,37 @@ Sometimes, you want to position children in a parent without knowing how much ch
 
 That's were `align` comes in. It expresses that elements should follow one another, either vertically or horizontally. The space before and space after the element turn into margins, so be careful: [they can cancel out](https://css-tricks.com/what-you-should-know-about-collapsing-margins/).
 
-:warning: When using align, you **can't use stretch** lengths on the axis `align` is used on.
+:warning: When using `align`, you **can't use stretch** lengths on the axis it is used on.
+
+
+## 2.3 &nbsp;Spacing the first and last children
+
+Suppose you are in same situation as before, but you'd like the first and last elements to touch the container. You could use the `:first-child` and `:last-child` pseudo-selectors, but they are *way* too inconvenient. Luckily, postcss-positioning provides a shortcut for this purpose.
+
+#### Without postcss-positioning
+```css
+.child {
+    display: block;
+    margin: 20px 0 0 0;
+    height: 200px;
+}
+.child:first-child {
+    margin-top: 0;
+}
+.child:last-child {
+    margin-bottom: 0;
+}
+```
+
+#### With postcss-positioning
+```css
+.child {
+    horizontal: 0 1s 0;
+    vertical: 20px 200px 0 align 0 0;
+}
+```
+
+You can specify two optional values after `align`, the first child's top margin and the last child's bottom margin.
 
 
 
