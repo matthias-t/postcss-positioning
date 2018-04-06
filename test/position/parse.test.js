@@ -56,14 +56,14 @@ describe('parse', () => {
     it('parses alignments', () => {
         expect(Position.parse(postcss.parse(`
             a {
-                horizontal: 1s 200px 1s align;
+                horizontal: 10px 200px 10px align;
                 vertical: 1s 200px 1s;
             }
         `))).toEqual({
             horizontal: {
-                before: '1s',
+                before: '10px',
                 size: '200px',
-                after: '1s'
+                after: '10px'
             },
             vertical: {
                 before: '1s',
@@ -76,7 +76,7 @@ describe('parse', () => {
         expect(Position.parse(postcss.parse(`
             a {
                 horizontal: 1s 200px 1s;
-                vertical: 1s 200px 1s align;
+                vertical: 15px 200px 5em align;
             }
         `))).toEqual({
             horizontal: {
@@ -85,9 +85,9 @@ describe('parse', () => {
                 after: '1s'
             },
             vertical: {
-                before: '1s',
+                before: '15px',
                 size: '200px',
-                after: '1s'
+                after: '5em'
             },
             align: direction.vertical
         });
@@ -116,7 +116,7 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 200px 1s align 12px;
+                    horizontal: 10px 200px 10px align 12px;
                     vertical: 1s 200px 1s;
                 }
             `));
@@ -125,8 +125,8 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 100px 1s align;
-                    vertical: 1s 100px 1s align;
+                    horizontal: 10px 100px 10px align;
+                    vertical: 20px 250px 20px align;
                 }
             `));
         }).toThrow('Cannot align both horizontally and vertically');
@@ -135,7 +135,7 @@ describe('parse', () => {
             Position.parse(postcss.parse(`
                 a {
                     type: fixed;
-                    horizontal: 1s 100px 1s align;
+                    horizontal: 10px 100px 10px align;
                     vertical: 1s 100px 1s;
                 }
             `));
@@ -144,12 +144,21 @@ describe('parse', () => {
         expect(() => {
             Position.parse(postcss.parse(`
                 a {
-                    horizontal: 1s 100px 1s align;
+                    horizontal: 10px 100px 10px align;
                     vertical: 1s 100px 1s;
                     type: sticky;
                 }
             `));
         }).toThrow('Cannot align and be sticky');
+
+        expect(() => {
+            Position.parse(postcss.parse(`
+                a {
+                    horizontal: 1s 100px 1s align;
+                    vertical: 10px 10px 1s;
+                }
+            `));
+        }).toThrow('Cannot use stretch values and align on the same axis');
     });
 
     it('parses types', () => {
