@@ -3,6 +3,8 @@
 .editorconfig
 .babelrc
 
+src/
+
 node_modules/
 npm-debug.log
 yarn.lock

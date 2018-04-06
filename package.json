@@ -32,7 +32,8 @@
     "postcss-calc": "^6.0.1"
   },
   "scripts": {
-    "test": "jest --verbose --coverage && eslint *.js"
+    "build": "babel src --out-dir js",
+    "test": "npm run build && jest --verbose --coverage && eslint \"src/**.js\""
   },
   "eslintConfig": {
     "extends": [
