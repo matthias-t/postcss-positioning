@@ -38,6 +38,21 @@ export default (rule) => {
             value: position[position.align.other].after
         });
 
+        if (position.margins) {
+
+            rule.after({
+                selector: rule.selector + ':first-child'
+            }).next().append({
+                prop: 'margin-' + position.align.before,
+                value: position.margins.first
+            }).after({
+                selector: rule.selector + ':last-child'
+            }).next().append({
+                prop: 'margin-' + position.align.after,
+                value: position.margins.last
+            });
+        }
+
     } else {
 
         if (position.type) {
