@@ -270,7 +270,7 @@ Suppose you are in same situation as before, but you'd like the first and last e
 }
 ```
 
-You can specify two optional values after `align`, the first child's top margin and the last child's bottom margin.
+You can specify two optional values after `align`, the space before the first child and after the last child.
 
 
 
