@@ -56,7 +56,7 @@ describe('postcss-positioning', () => {
     });
 
     it('processes alignments with margin shortcuts', () => {
-        Promise.all([
+        return Promise.all([
             run(
 `a {
     vertical: 20px 100px 25px align 0 1%;
