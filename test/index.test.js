@@ -54,4 +54,50 @@ describe('postcss-positioning', () => {
 }`,
         {});
     });
+
+    it('processes alignments with margin shortcuts', () => {
+        Promise.all([
+            run(
+`a {
+    vertical: 20px 100px 25px align 0 1%;
+    horizontal: 10px 1s 10px
+}`,
+`a {
+    width: calc((99.9% - (10px + 10px)) * 1 / (1));
+    height: 100px;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    margin-left: 10px;
+    margin-right: 10px
+}
+a:first-child {
+    margin-top: 0
+}
+a:last-child {
+    margin-bottom: 1%
+}`,
+            {}), run(
+`a {
+    vertical: 10px 1s 10px;
+    horizontal: 25px 70vw 20px align 52px 4em;
+}`,
+`a {
+    width: 70vw;
+    height: calc((99.9% - (10px + 10px)) * 1 / (1));
+    display: inline-block;
+    margin-left: 25px;
+    margin-right: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+a:first-child {
+    margin-left: 52px;
+}
+a:last-child {
+    margin-right: 4em;
+}`,
+            {})
+        ]);
+    });
 });
