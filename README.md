@@ -79,12 +79,6 @@ With PostCSS-Positioning, all you need is two properties, `horizontal` and `vert
  &nbsp; 4.2 &nbsp;[Usage](#42-usage) <br>
  &nbsp; 4.3 &nbsp;[Options](#43-options)
 
-#### 5 &nbsp; [Community](#5--community-1)
- &nbsp; 5.1 &nbsp;[Questions? Feedback?](#51-questions-feedback) <br>
- &nbsp; 5.2 &nbsp;[Acknowledgements](#52-acknowledgements) <br>
- &nbsp; 5.3 &nbsp;[Support PostCSS-Positioning](#53-support-postcss-positioning)
-
-
 # 1 &nbsp; Syntax
 
 ## 1.1 &nbsp;*Example:* Centering stuff
@@ -344,31 +338,8 @@ Error when using `align` without a offset
 
 Visualize how all elements are positioned on the page. Great for debugging or showcasing your work.
 
-# 5 &nbsp; Community
+***
 
-## 5.1 &nbsp;Questions? Feedback?
-
-  - Check the [wiki][wiki]
-  - Search existing [issues][issues]
-  - Open an issue
-  - [Contact me][contact]
-
-[wiki]: https://github.com/matthias-t/postcss-positioning/wiki
-[issues]: https://github.com/matthias-t/postcss-positioning/issues
-[contact]: mailto:matthias@totschnig.org
-
-## 5.2 &nbsp;Acknowledgements
-
-An important part of this project is inspired by Kevin Lynagh's [talk][talk] at Deconstruct 2017. This plugin wouldn't exist without it.
-
-Thanks a lot to all contributors who helped improving this plugin.
+Part of this project is inspired by Kevin Lynagh's [talk][talk] at Deconstruct 2017.
 
 [talk]: https://www.deconstructconf.com/2017/kevin-lynagh-choosing-features
-
-## 5.3 &nbsp;Support Postcss-Positioning
-
-If this plugin is useful to you, please consider supporting its development.
-
-[![Buy me a Coffee][coffee-img]][coffee]
-
-[coffee-img]: https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png
