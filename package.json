@@ -29,7 +29,7 @@
     "jest": "^21.0.0"
   },
   "peerDependencies": {
-    "postcss-normalize": "^4.0.0",
+    "postcss-autoreset": "^2.0.2",
     "postcss-calc": "^6.0.1"
   },
   "scripts": {
