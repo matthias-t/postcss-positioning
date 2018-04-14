@@ -4,6 +4,7 @@
 .babelrc
 
 src/
+img/
 
 node_modules/
 npm-debug.log
