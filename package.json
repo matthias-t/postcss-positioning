@@ -19,6 +19,7 @@
   "dependencies": {
     "postcss": "^6.0.16"
   },
+  "main": "js/index.js",
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
