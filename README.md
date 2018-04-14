@@ -80,7 +80,7 @@ Now think about it as *spacing*. You have an element. It has a size. And you've 
   vertical: top height bottom;
 }
 ```
-The values specify *space before*, *size*, and *space after* on both axes. Remaining space is distributed between stretch lengths (ending with `s`). [Read the (short) documentation](https://github.com/matthias-t/postcss-positioning/wiki/Documentation) to learn about elements with non-absolute positioning.
+The values specify *space before*, *size*, and *space after* on both axes. Remaining space is distributed between stretch lengths (ending with `s`). Read the [documentation](https://github.com/matthias-t/postcss-positioning/wiki/Documentation) to learn about elements with non-absolute positioning.
 
 ## Setup
 If you are not familiar with PostCSS, head to the [wiki](https://github.com/matthias-t/postcss-positioning/wiki/Setup) for detailed instructions.
@@ -91,7 +91,7 @@ npm install --save-dev postcss-positioning postcss-autoreset postcss-calc
 module.exports = {
     plugins: [
         require('postcss-positioning')({ /* options */ }),
-        require('postcss-calc'),
+        require('postcss-calc')(),
         require('postcss-autoreset')({ reset: 'initial' })
     ]
 }
