@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import process from './js/process.js';
+import process from './process.js';
 
 /* eslint no-unused-vars: "off" */
 
