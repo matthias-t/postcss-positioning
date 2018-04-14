@@ -100,4 +100,15 @@ a:last-child {
             {})
         ]);
     });
+
+    it('ignores other declarations', () => {
+        return run(
+`a {
+    color: red;
+}`,
+`a {
+    color: red;
+}`,
+        {});
+    });
 });
