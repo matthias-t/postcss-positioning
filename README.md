@@ -1,5 +1,3 @@
-:warning: :construction: **Attention**: This plugin is still in development. Some features detailed in this README aren't working just yet.
-
 <h1 align="center" id="title">
     <img src="img/logo.png" width="600px" align="center"></img>
 </h1>
@@ -47,93 +45,25 @@ Positioning in CSS is painful.
 
 Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties.
 
-Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it.
-
-With PostCSS-Positioning, all you need is two properties, `horizontal` and `vertical`. It lets you use a coherent system where spacing and positioning are defined in a consistent way.
+Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it. With PostCSS-Positioning, all you need is two properties, `horizontal` and `vertical`.
 
 
-## Table of contents
+## Examples
 
-#### 0 &nbsp; [PostCSS-Positioning](#title)
- &nbsp; 0.1 &nbsp;[Why?](#why-) <br>
- &nbsp; 0.2 &nbsp;[Table of contents](#table-of-contents)
+#### Center an element
 
-#### 1 &nbsp; [Syntax](#1--syntax-1)
- &nbsp; 1.1 &nbsp;[*Example:* Centering stuff](#11-example-centering-stuff) <br>
- &nbsp; 1.2 &nbsp;[Basic syntax](#12-basic-syntax) <br>
- &nbsp; 1.3 &nbsp;[Stretch units](#13-stretch-units) <br>
- &nbsp; 1.4 &nbsp;[Padding](#14-padding)
+<img alt="centered element" src="img/illustration1.svg" width="70%">
 
-#### 2 &nbsp;[`align`](#2--align)
- &nbsp; 2.1 &nbsp;[*Example:* Aligning children](#21-example-aligning-children) <br>
- &nbsp; 2.2 &nbsp;[The `align` keyword](#22-the-align-keyword) <br>
- &nbsp; 2.3 &nbsp;[Spacing the first and last children](#23-spacing-the-first-and-last-children)
-
-#### 3 &nbsp; [The `_` Underscore](#3--the-_-underscore-1)
- &nbsp; 3.1 &nbsp;[*Example:* Keeping aspect ratios](#31-example-keeping-aspect-ratios) <br>
- &nbsp; 3.2 &nbsp;[*Example:* Matching content](#32-example-matching-content) <br>
- &nbsp; 3.3 &nbsp;[The `_` keyword](#33-the-_-keyword)
-
-#### 4 &nbsp; [Getting Started](#4--getting-started-1)
- &nbsp; 4.1 &nbsp;[Installation](#41-installation) <br>
- &nbsp; 4.2 &nbsp;[Usage](#42-usage) <br>
- &nbsp; 4.3 &nbsp;[Options](#43-options)
-
-# 1 &nbsp; Syntax
-
-## 1.1 &nbsp;*Example:* Centering stuff
-
-<img alt="centered element" src="img/illustration1.svg" width="50%">
-
-#### Without postcss-positioning
-```css
-.parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.child {
-  height: 200px;
-  width: 200px;
-}
-```
-Well, there's [lots of ways](https://stackoverflow.com/questions/19461521/how-to-center-an-element-horizontally-and-vertically).
-#### With postcss-positioning
 ```css
 .child {
   horizontal: 1s 200px 1s;
   vertical: 1s 200px 1s;
 }
 ```
-We believe the childrens position should not be defined by style on the parent.
 
+#### Take up two thirds of the space on the right
 
-## 1.2 &nbsp;Basic syntax
-
-> "*What are those values doing?*"
-
-The values specify space before, size, and space after on both axes.
-
-```css
-.element {
-  horizontal: right width left;
-  vertical: top height bottom;
-}
-```
-
-
-## 1.3 &nbsp;Stretch units
-
-> "*Okay, but what is `1s`?*"
-
-Sometimes, you do not want to specify exact values for lengths, but you are interested in relations between them.
-
-That's essentially what happens when you center stuff — you don't care how long exactly the space before and after the element is. But you want to express that they should be equal.
-
-Want an element to take up two thirds of the space of its container to the right?
-
-<img alt="element taking up two thirds of its container to the right" src="img/illustration2.svg" width="50%">
+<img alt="element taking up two thirds of its container to the right" src="img/illustration2.svg" width="70%">
 
 ```css
 .element {
@@ -142,201 +72,30 @@ Want an element to take up two thirds of the space of its container to the right
 }
 ```
 
-When you specify lengths with stretch units, they will be processed last, and all the remaining space will be distributed between them.
+## How it works
 
-
-## 1.4 &nbsp;Padding
-
-> "*But I want my padding!*"
-
-Let's say you have an element. There should be space between your element and the text inside it. So you want text inside it that has not the same size as your element.
-
-Sounds to me like you actually have two elements. Your parent, and your text. And they have different sizes. And you want to 'cheat' to have one less element in your markup.
-
-**We want to have two elements where you can see two elements.**
-
-#### Without postcss-positioning
-
-<img alt="p with padding" src="img/illustration4.svg" width="50%">
-
-```html
-<div class="parent">
-    I am a cheater. I should be two elements.
-</div>
-```
 ```css
-.parent {
-    width: 200px;
-    height: 200px;
-    padding: 20px;
+.element {
+  horizontal: right width left;
+  vertical: top height bottom;
 }
 ```
+The values specify *space before*, *size*, and *space after* on both axes. Remaining space is distributed between stretch lengths (ending with `s`). [Read the (short) documentation](https://github.com/matthias-t/postcss-positioning/wiki/Documentation) to learn about elements with non-absolute positioning.
 
-#### With postcss-positioning
-
-<img alt="p inside div with margin" src="img/illustration3.svg" width="50%">
-
-
-```html
-<div class="parent">
-    <p>
-        I am explicitly a different size than my parent.
-    </p>
-</div>
-```
-```css
-.parent {
-    horizontal: 0 200px 0;
-    vertical: 0 200px 0;
-}
-
-.parent p {
-    horizontal: 20px 1s 20px;
-    vertical: 20px 1s 20px;
-}
-```
-
-You may think this is cluttered, or too explicit. You mustn't agree with this. We see two elements there, so we want to have two elements in the markup.
-
-
-# 2 &nbsp; `align`
-
-## 2.1 &nbsp;*Example:* Aligning children
-
-Let's say you're trying to vertically align elements one after another in a container. You also want each element to have a top margin of 20px.
-
-#### Without postcss-positioning
-```css
-.child {
-  display: block;
-  margin: 20px 0 0 0;
-  height: 200px;
-}
-```
-#### With postcss-positioning
-```css
-.child {
-  horizontal: 0 1s 0;
-  vertical: 20px 200px 0 align;
-}
-```
-
-Notice how the fact that the element's width takes up the whole space is explicit. Also note that this is a pretty simple example, where vanilla CSS remains pretty much uncluttered. It would be less so if the element also had to be horizontally centered and take up half the space (`horizontal: 1s 2s 1s;`).
-
-
-## 2.2 &nbsp;The `align` keyword
-
-> "*Fantastic, but what does `align` mean?*"
-
-Until now all elements we positioned were what you may know as absolutely positioned.
-
-Sometimes, you want to position children in a parent without knowing how much children there are or without positioning each one individually.
-
-That's were `align` comes in. It expresses that elements should follow one another, either vertically or horizontally. The space before and space after the element turn into margins, so be careful: [they can cancel out](https://css-tricks.com/what-you-should-know-about-collapsing-margins/).
-
-:warning: When using `align`, you **can't use stretch** lengths on the axis it is used on.
-
-
-## 2.3 &nbsp;Spacing the first and last children
-
-Suppose you are in same situation as before, but you'd like the first and last elements to touch the container. You could use the `:first-child` and `:last-child` pseudo-selectors, but they are *way* too inconvenient. Luckily, postcss-positioning provides a shortcut for this purpose.
-
-#### Without postcss-positioning
-```css
-.child {
-    display: block;
-    margin: 20px 0 0 0;
-    height: 200px;
-}
-.child:first-child {
-    margin-top: 0;
-}
-.child:last-child {
-    margin-bottom: 0;
-}
-```
-
-#### With postcss-positioning
-```css
-.child {
-    horizontal: 0 1s 0;
-    vertical: 20px 200px 0 align 0 0;
-}
-```
-
-You can specify two optional values after `align`, the space before the first child and after the last child.
-
-
-
-# 3 &nbsp; The `_` Underscore
-
-## 3.1 &nbsp;*Example:* Keeping aspect ratios
-
-When working with images most of the time you don't want to specify both width and height. You can skip a width or height with an underscore
-```css
-img {
-    horizontal: 0 1s 0;
-    vertical: 10px _ 1s;
-}
-```
-
-> *Note*: You still have to specify at least one stretch length
-
-## 3.2 &nbsp;*Example:* Matching content
-
-Let's suppose you are styling paragraphs in a container. You'll do something like:
-```css
-.container > p {
-    horizontal: 10px 1s 10px;
-    vertical: 10px 100px 10px align 5px;
-}
-```
-
-But wait, `100px` would give those paragraphs a fixed height. You want those paragraphs to be as long as the text they contain. Simply do:
-```css
-.container > p {
-    horizontal: 10px 1s 10px;
-    vertical: 10px _ 10px align 5px;
-}
-```
-
-## 3.3 &nbsp;The `_` keyword
-
-An underscore `_` expresses that a height or width should depend on the content. It is useful for working with images or paragraphs.
-
-
-# 4 &nbsp; Getting Started
-
-## 4.1 &nbsp;Installation
+## Setup
+If you are not familiar with PostCSS, head to the [wiki](https://github.com/matthias-t/postcss-positioning/wiki/Setup) for detailed instructions.
 ```bash
-npm install postcss-positioning --save-dev
+npm install --save-dev postcss-positioning postcss-autoreset postcss-calc
 ```
-
-## 4.2 &nbsp;Usage
 ```js
-postcss = require('postcss')
-positioning = require('postcss-positioning')
-
-postcss([
-    positioning({
-        strict: true,
-        dev: false
-    })
-])
+module.exports = {
+    plugins: [
+        require('postcss-positioning')({ /* options */ }),
+        require('postcss-calc'),
+        require('postcss-autoreset')({ reset: 'initial' })
+    ]
+}
 ```
-See [PostCSS] docs for examples for your environment.
-
-## 4.3 &nbsp;Options
-
-#### `strict`
-
-Warn when using properties that may interfere with PostCSS-Positioning like `width` and `height`.
-
-Error when using `align` without a offset
-
-#### `dev`
-
-Visualize how all elements are positioned on the page. Great for debugging or showcasing your work.
 
 ***
 
