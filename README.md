@@ -52,7 +52,7 @@ Now think about it as *spacing*. You have an element. It has a size. And you've 
 
 #### Center an element
 
-<img alt="centered element" src="img/illustration1.svg" width="70%" />
+<img alt="centered element" src="img/illustration1.png" width="70%" />
 
 ```css
 .child {
@@ -63,7 +63,7 @@ Now think about it as *spacing*. You have an element. It has a size. And you've 
 
 #### Take up two thirds of the space on the right
 
-<img alt="element taking up two thirds of its container to the right" src="img/illustration2.svg" width="70%" />
+<img alt="element taking up two thirds of its container to the right" src="img/illustration2.png" width="70%" />
 
 ```css
 .element {
