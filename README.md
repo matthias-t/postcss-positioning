@@ -85,14 +85,13 @@ The values specify *space before*, *size*, and *space after* on both axes. Remai
 ## Setup
 If you are not familiar with PostCSS, head to the [wiki](https://github.com/matthias-t/postcss-positioning/wiki/Setup) for detailed instructions.
 ```bash
-npm install --save-dev postcss-positioning postcss-autoreset postcss-calc
+npm install --save-dev postcss-positioning postcss-calc
 ```
 ```js
 module.exports = {
     plugins: [
         require('postcss-positioning')({ /* options */ }),
-        require('postcss-calc')(),
-        require('postcss-autoreset')({ reset: 'initial' })
+        require('postcss-calc')()
     ]
 }
 ```

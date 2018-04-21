@@ -30,7 +30,6 @@
     "jest": "^21.0.0"
   },
   "peerDependencies": {
-    "postcss-autoreset": "^2.0.2",
     "postcss-calc": "^6.0.1"
   },
   "scripts": {
