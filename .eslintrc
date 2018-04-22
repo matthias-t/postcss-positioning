@@ -1,6 +1,6 @@
 {
     "extends": [
-        "eslint-config-postcss/es5",
+        "eslint-config-postcss",
         "plugin:import/errors",
         "plugin:import/warnings"
     ],
