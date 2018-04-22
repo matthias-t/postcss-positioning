@@ -1,7 +1,6 @@
 import postcss from 'postcss';
 import process from './process.js';
-
-/* eslint no-unused-vars: "off" */
+import reset from './reset.js';
 
 const isPositionDecl = node => {
     return node.type === 'decl' &&
@@ -33,5 +32,9 @@ module.exports = postcss.plugin('postcss-positioning', opts => {
                 process(rule);
             }
         });
+
+        if (opts.reset) {
+            root.prepend(reset);
+        }
     };
 });

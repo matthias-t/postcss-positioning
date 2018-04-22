@@ -16,7 +16,7 @@ describe('postcss-positioning', () => {
     top: calc((99.9% - (10px)) * 1 / (1 + 1));
     left: calc((99.9% - (10px)) * 1 / (1 + 1));
 }`,
-        {});
+        { reset: false });
     });
 
     it('processes horizontal alignments', () => {
@@ -34,7 +34,7 @@ describe('postcss-positioning', () => {
     margin-top: 10px;
     margin-bottom: 10px;
 }`,
-        {});
+        { reset: false });
     });
 
     it('processes vertical alignments', () => {
@@ -52,7 +52,7 @@ describe('postcss-positioning', () => {
     margin-left: 10px;
     margin-right: 10px
 }`,
-        {});
+        { reset: false });
     });
 
     it('processes alignments with margin shortcuts', () => {
@@ -77,7 +77,7 @@ a:first-child {
 a:last-child {
     margin-bottom: 1%
 }`,
-            {}), run(
+            { reset: false }), run(
 `a {
     vertical: 10px 1s 10px;
     horizontal: 25px 70vw 20px align 52px 4em;
@@ -97,7 +97,7 @@ a:first-child {
 a:last-child {
     margin-right: 4em;
 }`,
-            {})
+            { reset: false })
         ]);
     });
 
@@ -109,6 +109,6 @@ a:last-child {
 `a {
     color: red;
 }`,
-        {});
+        { reset: false });
     });
 });
