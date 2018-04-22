@@ -3,12 +3,7 @@
         "ecmaVersion": 2018
     },
     "extends": [
-        "eslint-config-postcss",
-        "plugin:import/errors",
-        "plugin:import/warnings"
-    ],
-    "plugins": [
-        "import"
+        "eslint-config-postcss"
     ],
     "env": {
         "jest": true
