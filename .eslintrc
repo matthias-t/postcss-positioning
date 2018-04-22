@@ -1,0 +1,13 @@
+{
+    "extends": [
+        "eslint-config-postcss/es5",
+        "plugin:import/errors",
+        "plugin:import/warnings"
+    ],
+    "plugins": [
+        "import"
+    ],
+    "env": {
+        "jest": true
+    }
+}
