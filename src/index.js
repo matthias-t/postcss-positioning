@@ -12,10 +12,18 @@ const hasPositionDecl = rule => {
     return rule.nodes.some(isPositionDecl);
 };
 
-module.exports = postcss.plugin('postcss-positioning', opts => {
-    opts = opts || {};
+const defaults = {
+    reset: true,
+    warn: 'same',
+    dev: false
+};
 
-    // Work with options here
+module.exports = postcss.plugin('postcss-positioning', opts => {
+
+    opts = {
+        ...defaults,
+        ...opts
+    };
 
     return (root) => {
 
