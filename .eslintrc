@@ -1,4 +1,7 @@
 {
+    "parserOptions": {
+        "ecmaVersion": 2018
+    },
     "extends": [
         "eslint-config-postcss",
         "plugin:import/errors",
