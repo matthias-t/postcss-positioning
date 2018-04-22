@@ -10,6 +10,7 @@
         ]
     ],
     "plugins": [
-        "babel-plugin-object-entries-and-values-to-object-keys"
+        "babel-plugin-object-entries-and-values-to-object-keys",
+        "transform-object-rest-spread"
     ]
 }
