@@ -45,7 +45,7 @@ Positioning in CSS is painful.
 
 Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties.
 
-Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it. With PostCSS-Positioning, all you need is two properties, `horizontal` and `vertical`.
+Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it. With postcss-positioning, all you need is two properties, `horizontal` and `vertical`.
 
 
 ## Examples
