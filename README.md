@@ -2,13 +2,11 @@
     <img src="img/logo.png" width="600px" align="center" />
 </h1>
 
+[![npm][npm-img]][npm]
 [![Build Status][ci-img]][ci]
 [![Coverage][cov-img]][cov]
 [![Maintainability][climate-img]][climate]
 [![Dependencies][deps-img]][deps]
-[![npm][npm-img]][npm]
-[![Downloads][dwn-img]][npm]
-[![Contributions Welcome][contrib-img]][contrib]
 
 Rethinking CSS positioning with [PostCSS].
 
@@ -17,7 +15,7 @@ Rethinking CSS positioning with [PostCSS].
 [ci-img]:      https://travis-ci.org/matthias-t/postcss-positioning.svg
 [ci]:          https://travis-ci.org/matthias-t/postcss-positioning
 
-[cov-img]:     https://img.shields.io/codeclimate/coverage/github/matthias-t/postcss-positioning.svg
+[cov-img]:     https://img.shields.io/codeclimate/coverage/matthias-t/postcss-positioning.svg
 [cov]:         https://codeclimate.com/github/matthias-t/postcss-positioning
 
 [climate-img]: https://img.shields.io/codeclimate/maintainability/matthias-t/postcss-positioning.svg
