@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/matthias-t/postcss-positioning",
   "dependencies": {
-    "postcss": "^6.0.16"
+    "postcss": "^6.0.21"
   },
   "main": "js/index.js",
   "devDependencies": {
@@ -25,7 +25,7 @@
     "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "eslint": "^4.17.0",
+    "eslint": "^4.19.1",
     "eslint-config-postcss": "^2.0.2",
     "jest": "^21.0.0"
   },
