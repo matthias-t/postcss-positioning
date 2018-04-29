@@ -34,7 +34,14 @@
   },
   "scripts": {
     "build": "babel src --out-dir js",
-    "test": "npm run build && jest --verbose --coverage && eslint \"src/**.js\"",
+    "test": "npm run build && jest --verbose --coverage && npm run lint",
+    "lint": "eslint **/*.js",
     "prepublishOnly": "npm run build"
-  }
+  },
+  "eslintIgnore": [
+    "node_modules",
+    "js",
+    "coverage",
+    "img"
+  ]
 }
