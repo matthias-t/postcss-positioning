@@ -14,6 +14,11 @@ export const stretchValue = (length) => {
     return length.slice(0, -1);
 };
 
+// How much of these lengths are stretch ?
+export const stretchCount = (lengths) => {
+    return lengths.filter(isStretch).length;
+};
+
 const addAll = (array) => {
     if (array.length === 0) {
         return undefined;

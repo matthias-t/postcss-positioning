@@ -1,5 +1,6 @@
 import Position from '../../js/position/index';
-import { isStretch, stretchValue } from '../../js/position/stretch';
+import { isStretch, stretchValue, stretchCount }
+    from '../../js/position/stretch';
 import { direction } from '../../js/enum';
 
 describe('isStretch', () => {
@@ -31,6 +32,15 @@ describe('stretchValue', () => {
     it('throws errors for non-stretch lengths', () => {
         expect(() => stretchValue('34px')).toThrow();
         expect(() => stretchValue('34abs')).toThrow();
+    });
+});
+
+describe('stretchCount', () => {
+    it('counts the correct number of stretch lengths', () => {
+        expect(stretchCount(['1s', '2s', '1s'])).toEqual(3);
+        expect(stretchCount(['52s', '1px', '0'])).toEqual(1);
+        expect(stretchCount(['1s', 'auto', '34px'])).toEqual(1);
+        expect(stretchCount(['3s', 'auto', '6s'])).toEqual(2);
     });
 });
 
