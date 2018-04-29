@@ -1,4 +1,4 @@
-import isAuto from '../../src/position/isAuto'
+import isAuto from '../../js/position/isAuto'
 
 describe('isAuto', () => {
     it('returns true for auto sizes', () => {

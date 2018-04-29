@@ -1,4 +1,4 @@
-import reset from '../src/reset';
+import reset from '../js/reset';
 import run from './run'
 
 describe('options', () =>
