@@ -1,3 +1,5 @@
+import isAuto from './isAuto';
+
 // Tell if `length` is a stretch length
 export const isStretch = (length) => {
     const unit = length.match(/[A-z]+/);
@@ -26,17 +28,13 @@ export default function () {
 
     this.iterateDirections((direction, lengths) => {
 
+        if (lengths.some(isAuto) || this.isAlignedInDirection(direction)) {
+            return;
+        }
+
         const stretchValues = lengths.filter(isStretch)
             .map(stretchValue);
         const totalStretch = addAll(stretchValues);
-
-        if (totalStretch === undefined) {
-            if (this.isAlignedInDirection(direction)) {
-                return;
-            } else {
-                throw new Error('No stretch value found');
-            }
-        }
 
         const remainingValues = lengths
             .filter(length => !isStretch(length));
