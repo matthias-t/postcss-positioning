@@ -17,27 +17,24 @@ export default (rule) => {
 
     if (position.align) {
 
+        // display: block or inline-block depending on the axis
         rule.append({
             prop: 'display',
             value: position.align.display
         });
 
-        rule.append({
-            prop: 'margin-' + position.align.before,
-            value: position[position.align.prop].before
-        }, {
-            prop: 'margin-' + position.align.after,
-            value: position[position.align.prop].after
+        // margins
+        position.iterateDirections( (_direction, lengths) => {
+            rule.append({
+                prop: 'margin-' + _direction.before,
+                value: lengths[0]
+            }, {
+                prop: 'margin-' + _direction.after,
+                value: lengths[2]
+            });
         });
 
-        rule.append({
-            prop: 'margin-' + direction[position.align.other].before,
-            value: position[position.align.other].before
-        }, {
-            prop: 'margin-' + direction[position.align.other].after,
-            value: position[position.align.other].after
-        });
-
+        // first and last margins
         if (position.margins) {
 
             rule.after({
@@ -55,6 +52,7 @@ export default (rule) => {
 
     } else {
 
+        // position: absolute / static / fixed
         if (position.type) {
             rule.append({
                 prop: 'position',
@@ -67,6 +65,7 @@ export default (rule) => {
             });
         }
 
+        // absolute space
         rule.append({
             prop: direction.vertical.before,
             value: position.vertical.before

@@ -47,10 +47,10 @@ describe('postcss-positioning', () => {
     width: calc((99.9% - (10px + 10px)) * 1 / (1));
     height: 100px;
     display: block;
-    margin-top: 20px;
-    margin-bottom: 25px;
     margin-left: 10px;
-    margin-right: 10px
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px
 }`,
         { reset: false });
     });
@@ -66,10 +66,10 @@ describe('postcss-positioning', () => {
     width: calc((99.9% - (10px + 10px)) * 1 / (1));
     height: 100px;
     display: block;
-    margin-top: 20px;
-    margin-bottom: 25px;
     margin-left: 10px;
-    margin-right: 10px
+    margin-right: 10px;
+    margin-top: 20px;
+    margin-bottom: 25px
 }
 a:first-child {
     margin-top: 0
