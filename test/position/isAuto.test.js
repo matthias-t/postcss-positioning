@@ -1,4 +1,4 @@
-import isAuto from '../../js/position/isAuto'
+import isAuto from '../../js/position/isAuto';
 
 describe('isAuto', () => {
     it('returns true for auto sizes', () => {
@@ -12,4 +12,4 @@ describe('isAuto', () => {
         expect(isAuto('12.5px')).toEqual(false);
         expect(isAuto('3s')).toEqual(false);
     });
-})
+});
