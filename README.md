@@ -1,5 +1,5 @@
 <h1 align="center" id="title">
-    <img src="img/logo.png" width="600px" align="center" />
+    <img src="https://raw.githubusercontent.com/matthias-t/postcss-positioning/master/img/logo.png" width="600px" align="center" />
 </h1>
 
 [![npm][npm-img]][npm]
@@ -50,7 +50,7 @@ Now think about it as *spacing*. You have an element. It has a size. And you've 
 
 #### Center an element
 
-<img alt="centered element" src="img/illustration1.png" width="70%" />
+<img alt="centered element" src="https://raw.githubusercontent.com/matthias-t/postcss-positioning/master/img/illustration1.png" width="70%" />
 
 ```css
 .child {
@@ -61,7 +61,7 @@ Now think about it as *spacing*. You have an element. It has a size. And you've 
 
 #### Take up two thirds of the space on the right
 
-<img alt="element taking up two thirds of its container to the right" src="img/illustration2.png" width="70%" />
+<img alt="element taking up two thirds of its container to the right" src="https://raw.githubusercontent.com/matthias-t/postcss-positioning/master/img/illustration2.png" width="70%" />
 
 ```css
 .element {
