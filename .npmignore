@@ -2,6 +2,7 @@
 .gitignore
 .editorconfig
 .babelrc
+.eslintrc
 
 src/
 img/
