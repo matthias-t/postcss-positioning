@@ -12,9 +12,9 @@ describe('postcss-positioning', () => {
 `a {
     width: 10px;
     height: 10px;
-    position: absolute;
-    top: calc((99.9% - (10px)) * 1 / (1 + 1));
     left: calc((99.9% - (10px)) * 1 / (1 + 1));
+    top: calc((99.9% - (10px)) * 1 / (1 + 1));
+    position: absolute;
 }`,
         { reset: false });
     });
@@ -99,6 +99,70 @@ a:last-child {
 }`,
             { reset: false })
         ]);
+    });
+
+    it('processes auto sizes with one stretch unit', () => {
+        return run(
+`a {
+    horizontal: 0 auto 1s;
+    vertical: 1s 50% 1s;
+}`, `a {
+    width: auto;
+    height: 50%;
+    left: 0;
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    position: absolute;
+}`,
+        { reset: false });
+    });
+
+    it('processes auto sizes with two stretch units', () => {
+        return Promise.all([
+            run(
+`a {
+    horizontal: 1s auto 1s;
+    vertical: 1s 50% 1s;
+}`,
+`a {
+    width: auto;
+    height: 50%;
+    left: calc(1 * 99.9% / (1 + 1));
+    transform: translateX(calc(-1 * 99.9% / (1 + 1)));
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    position: relative;
+}`,
+            { reset: false }), run(
+`a {
+    horizontal: 0 20% 1s;
+    vertical: 3s auto 2s;
+}`, `a {
+    width: 20%;
+    height: auto;
+    left: 0;
+    top: calc(3 * 99.9% / (3 + 2));
+    transform: translateY(calc(-3 * 99.9% / (3 + 2)));
+    position: relative;
+}`,
+            { reset: false })
+        ]);
+    });
+
+    it('processes auto sizes with alignments', () => {
+        return run(
+`a {
+    horizontal: 0 1s 0;
+    vertical: 10px auto 10px align;
+}`,
+`a {
+    width: calc((99.9% - (0 + 0)) * 1 / (1));
+    height: auto;
+    display: block;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}`,
+        { reset: false });
     });
 
     it('ignores other declarations', () => {

@@ -1,7 +1,8 @@
 // Processes positioning for a rule
 
 import Position from './position/index';
-import { direction } from './enum';
+import isAuto from './position/isAuto';
+import { stretchCount, stretchRatio, wrapCalc } from './position/stretch';
 
 export default (rule) => {
 
@@ -24,12 +25,12 @@ export default (rule) => {
         });
 
         // margins
-        position.iterateDirections( (_direction, lengths) => {
+        position.iterateDirections( (direction, lengths) => {
             rule.append({
-                prop: 'margin-' + _direction.before,
+                prop: 'margin-' + direction.before,
                 value: lengths[0]
             }, {
-                prop: 'margin-' + _direction.after,
+                prop: 'margin-' + direction.after,
                 value: lengths[2]
             });
         });
@@ -52,7 +53,28 @@ export default (rule) => {
 
     } else {
 
-        // position: absolute / static / fixed
+        position.iterateDirections( (direction, lengths) => {
+            if (lengths.some(isAuto) && stretchCount(lengths) === 2) {
+                position.type = 'relative';
+                const ratio = stretchRatio(lengths);
+                rule.append({
+                    prop: direction.before,
+                    value: wrapCalc(ratio)
+                }, {
+                    prop: 'transform',
+                    value: direction.transform +
+                        '(' + wrapCalc('-' + ratio) + ')'
+                });
+            } else {
+                // absolute space
+                rule.append({
+                    prop: direction.before,
+                    value: lengths[0]
+                });
+            }
+        });
+
+        // position: absolute / relative / static / fixed
         if (position.type) {
             rule.append({
                 prop: 'position',
@@ -64,14 +86,5 @@ export default (rule) => {
                 value: 'absolute'
             });
         }
-
-        // absolute space
-        rule.append({
-            prop: direction.vertical.before,
-            value: position.vertical.before
-        }, {
-            prop: direction.horizontal.before,
-            value: position.horizontal.before
-        });
     }
 };

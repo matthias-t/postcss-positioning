@@ -10,7 +10,8 @@ export const direction = {
         display: 'inline-block',
         before: 'left',
         size: 'width',
-        after: 'right'
+        after: 'right',
+        transform: 'translateX'
     },
     vertical: {
         prop: 'vertical',
@@ -18,7 +19,8 @@ export const direction = {
         display: 'block',
         before: 'top',
         size: 'height',
-        after: 'bottom'
+        after: 'bottom',
+        transform: 'translateY'
     }
 };
 
