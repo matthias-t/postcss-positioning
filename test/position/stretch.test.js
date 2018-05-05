@@ -1,5 +1,5 @@
 import Position from '../../js/position/index';
-import { isStretch, stretchValue, stretchCount }
+import { isStretch, stretchValue, stretchCount, stretchRatio, wrapCalc }
     from '../../js/position/stretch';
 import { direction } from '../../js/enum';
 
@@ -41,6 +41,28 @@ describe('stretchCount', () => {
         expect(stretchCount(['52s', '1px', '0'])).toEqual(1);
         expect(stretchCount(['1s', 'auto', '34px'])).toEqual(1);
         expect(stretchCount(['3s', 'auto', '6s'])).toEqual(2);
+    });
+});
+
+describe('stretchRatio', () => {
+    it('returns the ratio between the first and last stretch length', () => {
+        expect(stretchRatio(['1s', 'auto', '1s']))
+            .toEqual('1 * 99.9% / (1 + 1)');
+        expect(stretchRatio(['1s', 'auto', '2s']))
+            .toEqual('1 * 99.9% / (1 + 2)');
+        expect(stretchRatio(['1s', '2s', '3s']))
+            .toEqual('1 * 99.9% / (1 + 3)');
+        expect(stretchRatio(['2.7s', '10px', '1s']))
+            .toEqual('2.7 * 99.9% / (2.7 + 1)');
+    });
+});
+
+describe('wrapCalc', () => {
+    it('wraps string in calc( )', () => {
+        expect(wrapCalc('a')).toEqual('calc(a)');
+        expect(wrapCalc('10px + 20px')).toEqual('calc(10px + 20px)');
+        expect(wrapCalc('2 * 5px / (1 + 2)'))
+            .toEqual('calc(2 * 5px / (1 + 2))');
     });
 });
 

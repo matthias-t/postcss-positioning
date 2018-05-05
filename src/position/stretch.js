@@ -19,6 +19,18 @@ export const stretchCount = (lengths) => {
     return lengths.filter(isStretch).length;
 };
 
+// Get the ratio between the first and last stretch length
+export const stretchRatio = (lengths) => {
+    const first = stretchValue(lengths[0]);
+    const last = stretchValue(lengths[2]);
+    return first + ' * 99.9% / (' + first + ' + ' + last + ')';
+};
+
+// Wrap calc( ) around a string
+export const wrapCalc = (length) => {
+    return 'calc(' + length + ')';
+};
+
 const addAll = (array) => {
     if (array.length === 0) {
         return undefined;
@@ -47,11 +59,13 @@ export default function () {
 
         lengths.forEach( (length, i) => {
             if (isStretch(length)) {
-                lengths[i] = 'calc((99.9% - ' +
+                // (99.9% - totalRemaining) * thisStretch / totalStretch
+                const expression = '(99.9% - ' +
                     totalRemaining + ') * ' +
                     stretchValue(length) + ' / ' +
-                    totalStretch + ')';
-                // (100% - totalRemaining) * thisStretch / totalStretch
+                    totalStretch;
+
+                lengths[i] = wrapCalc(expression);
             }
         });
 
