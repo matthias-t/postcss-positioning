@@ -1,47 +1,47 @@
 {
-  "name": "postcss-positioning",
-  "version": "0.2.2",
-  "description": "Make CSS positioning ridiculously simple",
-  "keywords": [
-    "postcss",
-    "css",
-    "postcss-plugin",
-    "positioning",
-    "spacing"
-  ],
-  "author": "Matthias Totschnig <matthias@totschnig.org>",
-  "license": "MIT",
-  "repository": "matthias-t/postcss-positioning",
-  "bugs": {
-    "url": "https://github.com/matthias-t/postcss-positioning/issues"
-  },
-  "homepage": "https://github.com/matthias-t/postcss-positioning",
-  "dependencies": {
-    "postcss": "^6.0.21"
-  },
-  "main": "js/index.js",
-  "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
-    "eslint": "^4.19.1",
-    "eslint-config-postcss": "^2.0.2",
-    "jest": "^21.0.0"
-  },
-  "peerDependencies": {
-    "postcss-calc": "^6.0.1"
-  },
-  "scripts": {
-    "build": "babel src --out-dir js",
-    "test": "npm run build && jest --verbose --coverage && npm run lint",
-    "lint": "eslint **/*.js",
-    "prepublishOnly": "npm run build"
-  },
-  "eslintIgnore": [
-    "node_modules",
-    "js",
-    "coverage",
-    "img"
-  ]
+    "name": "postcss-positioning",
+    "version": "0.2.2",
+    "description": "Make CSS positioning ridiculously simple",
+    "keywords": [
+        "postcss",
+        "css",
+        "postcss-plugin",
+        "positioning",
+        "spacing"
+    ],
+    "author": "Matthias Totschnig <matthias@totschnig.org>",
+    "license": "MIT",
+    "repository": "matthias-t/postcss-positioning",
+    "bugs": {
+        "url": "https://github.com/matthias-t/postcss-positioning/issues"
+    },
+    "homepage": "https://github.com/matthias-t/postcss-positioning",
+    "dependencies": {
+        "postcss": "^6.0.21"
+    },
+    "main": "js/index.js",
+    "devDependencies": {
+        "babel-cli": "^6.26.0",
+        "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
+        "babel-plugin-transform-object-rest-spread": "^6.26.0",
+        "babel-preset-env": "^1.6.1",
+        "eslint": "^4.19.1",
+        "eslint-config-postcss": "^2.0.2",
+        "jest": "^21.0.0"
+    },
+    "peerDependencies": {
+        "postcss-calc": "^6.0.1"
+    },
+    "scripts": {
+        "build": "babel src --out-dir js",
+        "test": "npm run build && jest --verbose --coverage && npm run lint",
+        "lint": "eslint **/*.js",
+        "prepublishOnly": "npm run build"
+    },
+    "eslintIgnore": [
+        "node_modules",
+        "js",
+        "coverage",
+        "img"
+    ]
 }
