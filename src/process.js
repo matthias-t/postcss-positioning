@@ -1,6 +1,6 @@
 // Processes positioning for a rule
 
-import Position from './position/index';
+import Position from './position/';
 import isAuto from './position/isAuto';
 import { stretchCount, stretchRatio, wrapCalc } from './position/stretch';
 

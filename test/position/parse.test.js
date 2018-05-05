@@ -1,5 +1,5 @@
 import postcss from 'postcss';
-import Position from '../../js/position/index';
+import Position from '../../js/position/';
 import { type, direction } from '../../js/enum';
 
 describe('parse', () => {

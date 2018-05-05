@@ -1,4 +1,4 @@
-import Position from '../../js/position/index';
+import Position from '../../js/position/';
 import { isStretch, stretchValue, stretchCount, stretchRatio, wrapCalc }
     from '../../js/position/stretch';
 import { direction } from '../../js/enum';

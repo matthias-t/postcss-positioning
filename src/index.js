@@ -1,6 +1,6 @@
 import postcss from 'postcss';
-import process from './process.js';
-import reset from './reset.js';
+import process from './process';
+import reset from './reset';
 
 const isPositionDecl = node => {
     return node.type === 'decl' &&

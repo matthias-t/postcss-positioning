@@ -1,5 +1,5 @@
 import { lengths } from '../../../enum';
-import parseAlign from './align.js';
+import parseAlign from './align';
 
 export default (decl, value, result) => {
     if (value.length < 3) {
