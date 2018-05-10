@@ -129,6 +129,7 @@ a:last-child {
     left: calc(1 * 99.9% / (1 + 1));
     transform: translateX(calc(-1 * 99.9% / (1 + 1)));
     top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    display: inline-block;
     position: relative;
 }`,
             { reset: false }), run(
@@ -141,6 +142,7 @@ a:last-child {
     left: 0;
     top: calc(3 * 99.9% / (3 + 2));
     transform: translateY(calc(-3 * 99.9% / (3 + 2)));
+    display: inline-block;
     position: relative;
 }`,
             { reset: false })

@@ -53,9 +53,11 @@ export default (rule) => {
 
     } else {
 
+        let relative = false;
         position.iterateDirections( (direction, lengths) => {
             if (lengths.some(isAuto) && stretchCount(lengths) === 2) {
                 position.type = 'relative';
+                relative = true;
                 const ratio = stretchRatio(lengths);
                 rule.append({
                     prop: direction.before,
@@ -73,6 +75,13 @@ export default (rule) => {
                 });
             }
         });
+
+        if (relative) {
+            rule.append({
+                prop: 'display',
+                value: 'inline-block'
+            });
+        }
 
         // position: absolute / relative / static / fixed
         if (position.type) {
