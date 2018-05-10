@@ -1,6 +1,6 @@
 import run from './run';
 
-/* eslint indent: "off" */
+/* eslint indent: "off", max-len: "off" */
 
 describe('postcss-positioning', () => {
     it('transforms basic position declarations', () => {
@@ -147,6 +147,23 @@ a:last-child {
 }`,
             { reset: false })
         ]);
+    });
+
+    it('processes auto sizes with two stretch units on both axes', () => {
+        return run(
+`a {
+    horizontal: 1s auto 1s;
+    vertical: 1s auto 1s;
+}`, `a {
+    width: auto;
+    height: auto;
+    left: calc(1 * 99.9% / (1 + 1));
+    transform: translateX(calc(-1 * 99.9% / (1 + 1))) translateY(calc(-1 * 99.9% / (1 + 1)));
+    top: calc(1 * 99.9% / (1 + 1));
+    display: inline-block;
+    position: relative;
+}`,
+        { reset: false });
     });
 
     it('processes auto sizes with alignments', () => {

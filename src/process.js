@@ -57,16 +57,26 @@ export default (rule) => {
         position.iterateDirections( (direction, lengths) => {
             if (lengths.some(isAuto) && stretchCount(lengths) === 2) {
                 position.type = 'relative';
-                relative = true;
+
                 const ratio = stretchRatio(lengths);
                 rule.append({
                     prop: direction.before,
                     value: wrapCalc(ratio)
-                }, {
-                    prop: 'transform',
-                    value: direction.transform +
-                        '(' + wrapCalc('-' + ratio) + ')'
                 });
+
+                const transformValue = direction.transform +
+                    '(' + wrapCalc('-' + ratio) + ')';
+                if (relative) {
+                    const transform = rule.nodes
+                        .filter(node => node.prop === 'transform')[0];
+                    transform.value += ' ' + transformValue;
+                } else {
+                    rule.append({
+                        prop: 'transform',
+                        value: transformValue
+                    });
+                    relative = true;
+                }
             } else {
                 // absolute space
                 rule.append({
