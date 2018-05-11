@@ -128,8 +128,8 @@ a:last-child {
     height: 50%;
     left: calc(1 * 99.9% / (1 + 1));
     transform: translateX(calc(-1 * 99.9% / (1 + 1)));
-    top: calc((99.9% - (50%)) * 1 / (1 + 1));
     display: inline-block;
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
     position: relative;
 }`,
             { reset: false }), run(
@@ -159,8 +159,8 @@ a:last-child {
     height: auto;
     left: calc(1 * 99.9% / (1 + 1));
     transform: translateX(calc(-1 * 99.9% / (1 + 1))) translateY(calc(-1 * 99.9% / (1 + 1)));
-    top: calc(1 * 99.9% / (1 + 1));
     display: inline-block;
+    top: calc(1 * 99.9% / (1 + 1));
     position: relative;
 }`,
         { reset: false });

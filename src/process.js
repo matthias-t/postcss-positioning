@@ -3,6 +3,7 @@
 import Position from './position/';
 import isAuto from './position/isAuto';
 import { stretchCount, stretchRatio, wrapCalc } from './position/stretch';
+import transform, { resetDeclaration } from './transform';
 
 export default (rule) => {
 
@@ -53,7 +54,7 @@ export default (rule) => {
 
     } else {
 
-        let relative = false;
+        resetDeclaration();
         position.iterateDirections( (direction, lengths) => {
             if (lengths.some(isAuto) && stretchCount(lengths) === 2) {
                 position.type = 'relative';
@@ -63,20 +64,8 @@ export default (rule) => {
                     prop: direction.before,
                     value: wrapCalc(ratio)
                 });
+                transform(rule, direction, ratio);
 
-                const transformValue = direction.transform +
-                    '(' + wrapCalc('-' + ratio) + ')';
-                if (relative) {
-                    const transform = rule.nodes
-                        .filter(node => node.prop === 'transform')[0];
-                    transform.value += ' ' + transformValue;
-                } else {
-                    rule.append({
-                        prop: 'transform',
-                        value: transformValue
-                    });
-                    relative = true;
-                }
             } else {
                 // absolute space
                 rule.append({
@@ -85,13 +74,6 @@ export default (rule) => {
                 });
             }
         });
-
-        if (relative) {
-            rule.append({
-                prop: 'display',
-                value: 'inline-block'
-            });
-        }
 
         // position: absolute / relative / static / fixed
         rule.append({
