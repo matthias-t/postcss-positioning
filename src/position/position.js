@@ -12,17 +12,30 @@ export default class Position {
         if (margins) this.margins = margins;
     }
 
-    iterateDirections(callback) {
-        [
+    iterableDirections() {
+        return [
             {
                 dir: direction.horizontal,
-                lengths: Object.values(this.horizontal)
-            }, {
+                lengths: this.horizontal
+            },
+            {
                 dir: direction.vertical,
-                lengths: Object.values(this.vertical)
+                lengths: this.vertical
             }
-        ].forEach(({ dir, lengths }) => {
-            callback(dir, lengths);
+        ];
+    }
+
+    iterateDirections(callback) {
+        this.iterableDirections().forEach( ({ dir, lengths }) => {
+            callback(dir, Object.values(lengths));
+        });
+    }
+
+    iterateLengths(callback) {
+        this.iterableDirections().forEach( ({ dir, lengths }) => {
+            Object.entries(lengths).forEach( ({ key, value }) => {
+                callback(dir, key, value);
+            });
         });
     }
 
