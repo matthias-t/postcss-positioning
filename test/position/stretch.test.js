@@ -73,6 +73,29 @@ describe('stretch', () => {
     it('transforms stretch values into calc expressions', () => {
         expect(new Position({
             horizontal: {
+                before: '1s',
+                size: '1.3px',
+                after: '7.34%'
+            },
+            vertical: {
+                before: '56vw',
+                size: '1000px',
+                after: '1s'
+            }
+        }).stretch()).toEqual(new Position({
+            horizontal: {
+                before: 'calc((99.9% - (1.3px + 7.34%)) * 1 / (1))',
+                size: '1.3px',
+                after: '7.34%'
+            },
+            vertical: {
+                before: '56vw',
+                size: '1000px',
+                after: 'calc((99.9% - (56vw + 1000px)) * 1 / (1))'
+            }
+        }));
+        expect(new Position({
+            horizontal: {
                 before: '10px',
                 size: '1s',
                 after: '10em'
