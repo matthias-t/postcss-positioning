@@ -94,16 +94,9 @@ export default (rule) => {
         }
 
         // position: absolute / relative / static / fixed
-        if (position.type) {
-            rule.append({
-                prop: 'position',
-                value: position.type
-            });
-        } else {
-            rule.append({
-                prop: 'position',
-                value: 'absolute'
-            });
-        }
+        rule.append({
+            prop: 'position',
+            value: position.type || 'absolute'
+        });
     }
 };
