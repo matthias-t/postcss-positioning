@@ -26,11 +26,12 @@ export default class Position {
         });
     }
 
+    // Set lengths for a direction, ignoring undefined
     setDirection(dir, lengths) {
         this[dir.prop] = {
-            before: lengths[0],
-            size: lengths[1],
-            after: lengths[2]
+            ...lengths[0] && { before: lengths[0] },
+            ...lengths[1] && { size: lengths[1] },
+            ...lengths[2] && { after: lengths[2] }
         };
     }
 
