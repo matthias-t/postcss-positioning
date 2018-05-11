@@ -33,7 +33,7 @@ export default class Position {
 
     iterateLengths(callback) {
         this.iterableDirections().forEach( ({ dir, lengths }) => {
-            Object.entries(lengths).forEach( ({ key, value }) => {
+            Object.entries(lengths).forEach( ([key, value]) => {
                 callback(dir, key, value);
             });
         });
