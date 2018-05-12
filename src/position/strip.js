@@ -1,3 +1,4 @@
+import { isStretch } from './stretch';
 
 // Tells if a string is a calc expressiong
 export const isCalc = (length) => {
@@ -5,10 +6,10 @@ export const isCalc = (length) => {
         length.slice(-1) === ')';
 };
 
-// Turns the last n calc expressions into undefined
-export const calcUndef = (lengths, n) => {
+// Turns the last n stretch lengths (processed or not) into undefined
+export const stretchUndef = (lengths, n) => {
     return lengths.reverse().map(length => {
-        if (isCalc(length) && n !== 0) {
+        if ((isCalc(length) || isStretch(length)) && n !== 0) {
             n--;
             return undefined;
         } else {
@@ -20,7 +21,10 @@ export const calcUndef = (lengths, n) => {
 // Remove redundant lengths after processing stretch units
 export default function () {
     this.iterateDirections((direction, lengths) => {
-        lengths = calcUndef(lengths, 1);
+        if (lengths.length !== 3) {
+            return;
+        }
+        lengths = stretchUndef(lengths, 1);
         this.setDirection(direction, lengths);
     });
     return this;

@@ -1,5 +1,5 @@
 import Position from '../../js/position/';
-import { isCalc, calcUndef } from '../../js/position/strip';
+import { isCalc, stretchUndef } from '../../js/position/strip';
 import { direction } from '../../js/enum';
 
 describe('isCalc', () => {
@@ -16,28 +16,30 @@ describe('isCalc', () => {
     });
 });
 
-describe('calcUndef', () => {
+describe('stretchUndef', () => {
     const calc = 'calc()';
-    it('turns the n last calc expressions into undefined', () => {
+    it('sets the n last stretch/calc lengths to undefined', () => {
 
-        expect(calcUndef([calc, calc, calc], 1))
+        expect(stretchUndef([calc, calc, calc], 1))
             .toEqual([calc, calc, undefined]);
-        expect(calcUndef([calc, calc, calc], 2))
+        expect(stretchUndef([calc, '1s', calc], 2))
             .toEqual([calc, undefined, undefined]);
-        expect(calcUndef([calc, calc, calc], 3))
+        expect(stretchUndef([calc, calc, calc], 3))
             .toEqual([undefined, undefined, undefined]);
 
-        expect(calcUndef([calc, calc, '1px'], 1))
+        expect(stretchUndef([calc, calc, '1px'], 1))
             .toEqual([calc, undefined, '1px']);
-        expect(calcUndef([calc, calc, '1px'], 2))
+        expect(stretchUndef([calc, calc, '1px'], 2))
             .toEqual([undefined, undefined, '1px']);
 
-        expect(calcUndef(['8.5%', calc, '1px'], 1))
+        expect(stretchUndef(['8.5%', calc, '1px'], 1))
             .toEqual(['8.5%', undefined, '1px']);
-        expect(calcUndef(['8.5%', calc, '1px'], 2))
+        expect(stretchUndef(['8.5%', '1s', '1px'], 1))
+            .toEqual(['8.5%', undefined, '1px']);
+        expect(stretchUndef(['8.5%', calc, '1px'], 2))
             .toEqual(['8.5%', undefined, '1px']);
 
-        expect(calcUndef(['2em', '3%', '1px'], 1))
+        expect(stretchUndef(['2em', '3%', '1px'], 1))
             .toEqual(['2em', '3%', '1px']);
     });
 });
@@ -54,6 +56,27 @@ describe('strip', () => {
                 before: '56vw',
                 size: '1000px',
                 after: 'calc((99.9% - (56vw + 1000px)) * 1 / (1))'
+            }
+        }).strip()).toEqual(new Position({
+            horizontal: {
+                size: '1.3px',
+                after: '7.34%'
+            },
+            vertical: {
+                before: '56vw',
+                size: '1000px'
+            }
+        }));
+        expect(new Position({
+            horizontal: {
+                before: '1s',
+                size: '1.3px',
+                after: '7.34%'
+            },
+            vertical: {
+                before: '56vw',
+                size: '1000px',
+                after: '1s'
             }
         }).strip()).toEqual(new Position({
             horizontal: {
