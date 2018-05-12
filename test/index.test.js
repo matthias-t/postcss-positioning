@@ -4,19 +4,32 @@ import run from './run';
 
 describe('postcss-positioning', () => {
     it('transforms basic position declarations', () => {
-        return run(
+        return Promise.all([
+            run(
 `a {
     horizontal: 1s 10px 1s;
     vertical: 1s 10px 1s;
 }`,
 `a {
-    width: 10px;
-    height: 10px;
-    left: calc((99.9% - (10px)) * 1 / (1 + 1));
-    top: calc((99.9% - (10px)) * 1 / (1 + 1));
     position: absolute;
+    left: calc((99.9% - (10px)) * 1 / (1 + 1));
+    width: 10px;
+    top: calc((99.9% - (10px)) * 1 / (1 + 1));
+    height: 10px;
 }`,
-        { reset: false });
+            { reset: false }), run(
+`a {
+    horizontal: 0 1s 0;
+    vertical: 1s 20px 0;
+}`, `a {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 20px;
+    bottom: 0;
+}`,
+            { reset: false })
+        ]);
     });
 
     it('processes horizontal alignments', () => {
@@ -26,12 +39,12 @@ describe('postcss-positioning', () => {
     horizontal: 25px 70vw 20px align;
 }`,
 `a {
-    width: 70vw;
-    height: calc((99.9% - (10px + 10px)) * 1 / (1));
     display: inline-block;
     margin-left: 25px;
+    width: 70vw;
     margin-right: 20px;
     margin-top: 10px;
+    height: calc((99.9% - (10px + 10px)) * 1 / (1));
     margin-bottom: 10px;
 }`,
         { reset: false });
@@ -44,12 +57,12 @@ describe('postcss-positioning', () => {
     horizontal: 10px 1s 10px
 }`,
 `a {
-    width: calc((99.9% - (10px + 10px)) * 1 / (1));
-    height: 100px;
     display: block;
     margin-left: 10px;
+    width: calc((99.9% - (10px + 10px)) * 1 / (1));
     margin-right: 10px;
     margin-top: 20px;
+    height: 100px;
     margin-bottom: 25px
 }`,
         { reset: false });
@@ -63,12 +76,12 @@ describe('postcss-positioning', () => {
     horizontal: 10px 1s 10px
 }`,
 `a {
-    width: calc((99.9% - (10px + 10px)) * 1 / (1));
-    height: 100px;
     display: block;
     margin-left: 10px;
+    width: calc((99.9% - (10px + 10px)) * 1 / (1));
     margin-right: 10px;
     margin-top: 20px;
+    height: 100px;
     margin-bottom: 25px
 }
 a:first-child {
@@ -83,12 +96,12 @@ a:last-child {
     horizontal: 25px 70vw 20px align 52px 4em;
 }`,
 `a {
-    width: 70vw;
-    height: calc((99.9% - (10px + 10px)) * 1 / (1));
     display: inline-block;
     margin-left: 25px;
+    width: 70vw;
     margin-right: 20px;
     margin-top: 10px;
+    height: calc((99.9% - (10px + 10px)) * 1 / (1));
     margin-bottom: 10px;
 }
 a:first-child {
@@ -102,18 +115,31 @@ a:last-child {
     });
 
     it('processes auto sizes with one stretch unit', () => {
-        return run(
+        return Promise.all([
+            run(
 `a {
     horizontal: 0 auto 1s;
     vertical: 1s 50% 1s;
 }`, `a {
-    width: auto;
-    height: 50%;
-    left: 0;
-    top: calc((99.9% - (50%)) * 1 / (1 + 1));
     position: absolute;
+    left: 0;
+    width: auto;
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    height: 50%;
 }`,
-        { reset: false });
+            { reset: false }), run(
+`a {
+    horizontal: 1s auto 0;
+    vertical: 1s 50% 1s;
+}`, `a {
+    position: absolute;
+    width: auto;
+    right: 0;
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    height: 50%;
+}`,
+            { reset: false })
+        ]);
     });
 
     it('processes auto sizes with two stretch units', () => {
@@ -124,26 +150,26 @@ a:last-child {
     vertical: 1s 50% 1s;
 }`,
 `a {
-    width: auto;
-    height: 50%;
     left: calc(1 * 99.9% / (1 + 1));
     transform: translateX(calc(-1 * 99.9% / (1 + 1)));
     display: inline-block;
-    top: calc((99.9% - (50%)) * 1 / (1 + 1));
     position: relative;
+    width: auto;
+    top: calc((99.9% - (50%)) * 1 / (1 + 1));
+    height: 50%;
 }`,
             { reset: false }), run(
 `a {
     horizontal: 0 20% 1s;
     vertical: 3s auto 2s;
 }`, `a {
-    width: 20%;
-    height: auto;
-    left: 0;
     top: calc(3 * 99.9% / (3 + 2));
     transform: translateY(calc(-3 * 99.9% / (3 + 2)));
     display: inline-block;
     position: relative;
+    left: 0;
+    width: 20%;
+    height: auto;
 }`,
             { reset: false })
         ]);
@@ -155,13 +181,13 @@ a:last-child {
     horizontal: 1s auto 1s;
     vertical: 1s auto 1s;
 }`, `a {
-    width: auto;
-    height: auto;
     left: calc(1 * 99.9% / (1 + 1));
     transform: translateX(calc(-1 * 99.9% / (1 + 1))) translateY(calc(-1 * 99.9% / (1 + 1)));
     display: inline-block;
     top: calc(1 * 99.9% / (1 + 1));
     position: relative;
+    width: auto;
+    height: auto;
 }`,
         { reset: false });
     });
@@ -173,12 +199,12 @@ a:last-child {
     vertical: 10px auto 10px align;
 }`,
 `a {
-    width: calc((99.9% - (0 + 0)) * 1 / (1));
-    height: auto;
     display: block;
     margin-left: 0;
+    width: calc((99.9% - (0 + 0)) * 1 / (1));
     margin-right: 0;
     margin-top: 10px;
+    height: auto;
     margin-bottom: 10px;
 }`,
         { reset: false });

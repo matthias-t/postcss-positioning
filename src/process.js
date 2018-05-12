@@ -9,13 +9,7 @@ export default (rule) => {
 
     const position = Position.parse(rule).stretch();
 
-    rule.append({
-        prop: 'width',
-        value: position.horizontal.size
-    }, {
-        prop: 'height',
-        value: position.vertical.size
-    });
+    let prefix = '';
 
     if (position.align) {
 
@@ -25,16 +19,7 @@ export default (rule) => {
             value: position.align.display
         });
 
-        // margins
-        position.iterateDirections( (direction, lengths) => {
-            rule.append({
-                prop: 'margin-' + direction.before,
-                value: lengths[0]
-            }, {
-                prop: 'margin-' + direction.after,
-                value: lengths[2]
-            });
-        });
+        prefix = 'margin-';
 
         // first and last margins
         if (position.margins) {
@@ -54,6 +39,7 @@ export default (rule) => {
 
     } else {
 
+        // Declarations with auto and 2 stretch lengths
         resetDeclaration();
         position.iterateDirections( (direction, lengths) => {
             if (lengths.some(isAuto) && stretchCount(lengths) === 2) {
@@ -66,14 +52,12 @@ export default (rule) => {
                 });
                 transform(rule, direction, ratio);
 
-            } else {
-                // absolute space
-                rule.append({
-                    prop: direction.before,
-                    value: lengths[0]
-                });
+                position.setDirection(direction,
+                    [undefined, lengths[1], undefined]);
             }
         });
+
+        position.strip();
 
         // position: absolute / relative / static / fixed
         rule.append({
@@ -81,4 +65,11 @@ export default (rule) => {
             value: position.type || 'absolute'
         });
     }
+
+    position.iterateLengths( (direction, length, value) => {
+        rule.append({
+            prop: (length === 'size' ? '' : prefix) + direction[length],
+            value
+        });
+    });
 };
