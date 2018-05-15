@@ -17,3 +17,4 @@ plugins:
 exclude_patterns:
   - "test/"
   - "img/"
+  - "eslint-config-postcss/"
