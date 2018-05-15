@@ -1,4 +1,12 @@
 version: "2"
+
+prepare:
+  fetch:
+    - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/index.js"
+      path: "node_modules/eslint-config-postcss/eslint-config.js"
+    - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/es5.js"
+      path: "node_modules/eslint-config-postcss/es5.js"
+
 plugins:
   eslint:
     enabled: true
