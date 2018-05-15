@@ -3,14 +3,16 @@ version: "2"
 prepare:
   fetch:
     - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/index.js"
-      path: "node_modules/eslint-config-postcss/eslint-config.js"
+      path: "eslint-config-postcss/eslint-config.js"
     - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/es5.js"
-      path: "node_modules/eslint-config-postcss/es5.js"
+      path: "eslint-config-postcss/es5.js"
 
 plugins:
   eslint:
     enabled: true
     channel: "eslint-4"
+    config:
+      config: "eslint-config-postcss/eslint-config.js"
 
 exclude_patterns:
   - "test/"
