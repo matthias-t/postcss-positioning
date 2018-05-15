@@ -2,10 +2,8 @@ version: "2"
 
 prepare:
   fetch:
-    - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/index.js"
+    - url: "https://cdn.rawgit.com/matthias-t/eslint-config-postcss/codeclimate/index.js"
       path: "eslint-config-postcss/eslint-config.js"
-    - url: "https://cdn.rawgit.com/postcss/eslint-config-postcss/66792de3/es5.js"
-      path: "eslint-config-postcss/es5.js"
 
 plugins:
   eslint:
