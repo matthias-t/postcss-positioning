@@ -19,7 +19,7 @@
     "dependencies": {
         "postcss": "^6.0.21"
     },
-    "main": "js/index.js",
+    "main": "lib/index.js",
     "devDependencies": {
         "babel-cli": "^6.26.0",
         "babel-jest": "^22.4.3",
@@ -34,7 +34,7 @@
         "postcss-calc": "^6.0.1"
     },
     "scripts": {
-        "build": "babel src --out-dir js",
+        "build": "babel src --out-dir lib",
         "test": "jest --verbose --coverage",
         "lint": "eslint '**/*.js'",
         "checks": "npm run test && npm run lint",
@@ -42,7 +42,7 @@
     },
     "eslintIgnore": [
         "node_modules",
-        "js",
+        "lib",
         "coverage",
         "img"
     ],
