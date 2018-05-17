@@ -1,4 +1,4 @@
-import Position from '../../js/position/position';
+import Position from '../../src/position/position';
 import { direction } from '../../src/enum';
 
 /* eslint max-len: "off" */

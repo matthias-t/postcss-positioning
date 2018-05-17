@@ -1,6 +1,6 @@
 import postcss from 'postcss';
-import Position from '../../js/position/';
-import { type, direction } from '../../js/enum';
+import Position from '../../src/position/';
+import { type, direction } from '../../src/enum';
 
 describe('parse', () => {
 

@@ -22,6 +22,7 @@
     "main": "js/index.js",
     "devDependencies": {
         "babel-cli": "^6.26.0",
+        "babel-jest": "^22.4.3",
         "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-preset-env": "^1.6.1",
@@ -34,7 +35,7 @@
     },
     "scripts": {
         "build": "babel src --out-dir js",
-        "test": "npm run build && jest --verbose --coverage",
+        "test": "jest --verbose --coverage",
         "lint": "eslint '**/*.js'",
         "checks": "npm run test && npm run lint",
         "prepublishOnly": "npm run build"
@@ -44,5 +45,10 @@
         "js",
         "coverage",
         "img"
-    ]
+    ],
+    "jest": {
+        "transform": {
+            "^.+\\.jsx?$": "babel-jest"
+        }
+    }
 }

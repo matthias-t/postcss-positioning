@@ -1,7 +1,7 @@
-import Position from '../../js/position/';
+import Position from '../../src/position/';
 import { isStretch, stretchValue, stretchCount, stretchRatio, wrapCalc }
-    from '../../js/position/stretch';
-import { direction } from '../../js/enum';
+    from '../../src/position/stretch';
+import { direction } from '../../src/enum';
 
 describe('isStretch', () => {
 

@@ -1,6 +1,6 @@
-import Position from '../../js/position/';
-import { isCalc, stretchUndef } from '../../js/position/strip';
-import { direction } from '../../js/enum';
+import Position from '../../src/position/';
+import { isCalc, stretchUndef } from '../../src/position/strip';
+import { direction } from '../../src/enum';
 
 describe('isCalc', () => {
     it('returns true for calc expressions', () => {
