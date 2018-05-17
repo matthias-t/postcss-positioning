@@ -14,3 +14,4 @@ yarn.lock
 test/
 coverage/
 .travis.yml
+.codeclimate.yml
