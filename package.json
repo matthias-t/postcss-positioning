@@ -17,18 +17,18 @@
     },
     "homepage": "https://github.com/matthias-t/postcss-positioning",
     "dependencies": {
-        "postcss": "^6.0.21"
+        "postcss": "^7.0.1"
     },
     "main": "lib/index.js",
     "devDependencies": {
         "babel-cli": "^6.26.0",
-        "babel-jest": "^22.4.3",
+        "babel-jest": "^23.4.0",
         "babel-plugin-object-entries-and-values-to-object-keys": "^1.0.1",
         "babel-plugin-transform-object-rest-spread": "^6.26.0",
         "babel-preset-env": "^1.6.1",
-        "eslint": "^4.19.1",
-        "eslint-config-postcss": "^2.0.2",
-        "jest": "^22.4.3"
+        "eslint": "^5.2.0",
+        "eslint-config-postcss": "^3.0.3",
+        "jest": "^23.4.1"
     },
     "peerDependencies": {
         "postcss-calc": "^6.0.1"
