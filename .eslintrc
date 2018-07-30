@@ -11,6 +11,7 @@
     rules: {
         node/no-unsupported-features/es-syntax: 0,   // We have Babel!
         node/no-unsupported-features/es-builtins: 0,
-        func-style: [2, 'declaration', { allowArrowFunctions: true }]
+        func-style: [2, 'declaration', { allowArrowFunctions: true }],
+        no-invalid-this: 1
     }
 }
