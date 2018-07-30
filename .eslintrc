@@ -1,11 +1,16 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 2018
+    parserOptions: {
+        ecmaVersion: 2018,
+        sourceType: 'module'
     },
-    "extends": [
-        "eslint-config-postcss"
-    ],
-    "env": {
-        "jest": true
+    extends: 'postcss',
+    env: {
+        jest: true,
+        es6: true
+    },
+    rules: {
+        node/no-unsupported-features/es-syntax: 0,   // We have Babel!
+        node/no-unsupported-features/es-builtins: 0,
+        func-style: [2, 'declaration', { allowArrowFunctions: true }]
     }
 }
