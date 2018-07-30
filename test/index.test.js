@@ -1,4 +1,4 @@
-import run from './run';
+import run from './run'
 
 /* eslint indent: "off", max-len: "off" */
 
@@ -29,8 +29,8 @@ describe('postcss-positioning', () => {
     bottom: 0;
 }`,
             { reset: false })
-        ]);
-    });
+        ])
+    })
 
     it('processes horizontal alignments', () => {
         return run(
@@ -47,8 +47,8 @@ describe('postcss-positioning', () => {
     height: calc((99.9% - (10px + 10px)) * 1 / (1));
     margin-bottom: 10px;
 }`,
-        { reset: false });
-    });
+        { reset: false })
+    })
 
     it('processes vertical alignments', () => {
         return run(
@@ -65,8 +65,8 @@ describe('postcss-positioning', () => {
     height: 100px;
     margin-bottom: 25px
 }`,
-        { reset: false });
-    });
+        { reset: false })
+    })
 
     it('processes alignments with margin shortcuts', () => {
         return Promise.all([
@@ -111,8 +111,8 @@ a:last-child {
     margin-right: 4em;
 }`,
             { reset: false })
-        ]);
-    });
+        ])
+    })
 
     it('processes auto sizes with one stretch unit', () => {
         return Promise.all([
@@ -139,8 +139,8 @@ a:last-child {
     height: 50%;
 }`,
             { reset: false })
-        ]);
-    });
+        ])
+    })
 
     it('processes auto sizes with two stretch units', () => {
         return Promise.all([
@@ -172,8 +172,8 @@ a:last-child {
     height: auto;
 }`,
             { reset: false })
-        ]);
-    });
+        ])
+    })
 
     it('processes auto sizes with two stretch units on both axes', () => {
         return run(
@@ -189,8 +189,8 @@ a:last-child {
     width: auto;
     height: auto;
 }`,
-        { reset: false });
-    });
+        { reset: false })
+    })
 
     it('processes auto sizes with alignments', () => {
         return run(
@@ -207,8 +207,8 @@ a:last-child {
     height: auto;
     margin-bottom: 10px;
 }`,
-        { reset: false });
-    });
+        { reset: false })
+    })
 
     it('ignores other declarations', () => {
         return run(
@@ -218,6 +218,6 @@ a:last-child {
 `a {
     color: red;
 }`,
-        { reset: false });
-    });
-});
+        { reset: false })
+    })
+})

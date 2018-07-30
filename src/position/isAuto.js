@@ -1,3 +1,3 @@
-export default (length) => {
-    return length === 'auto' || length === '_';
-};
+export default length => {
+  return length === 'auto' || length === '_'
+}
