@@ -55,6 +55,7 @@
         "img"
     ],
     "jest": {
+        "testEnvironment": "node",
         "transform": {
             "^.+\\.jsx?$": "babel-jest"
         }
