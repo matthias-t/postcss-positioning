@@ -4,9 +4,6 @@
 
 [![npm][npm-img]][npm]
 [![Build Status][ci-img]][ci]
-[![Coverage][cov-img]][cov]
-[![Maintainability][climate-img]][climate]
-[![Dependencies][deps-img]][deps]
 
 Rethinking CSS positioning with [PostCSS].
 
@@ -15,33 +12,15 @@ Rethinking CSS positioning with [PostCSS].
 [ci-img]:      https://travis-ci.org/matthias-t/postcss-positioning.svg
 [ci]:          https://travis-ci.org/matthias-t/postcss-positioning
 
-[cov-img]:     https://img.shields.io/codeclimate/coverage/matthias-t/postcss-positioning.svg
-[cov]:         https://codeclimate.com/github/matthias-t/postcss-positioning
-
-[climate-img]: https://img.shields.io/codeclimate/maintainability/matthias-t/postcss-positioning.svg
-[climate]:     https://codeclimate.com/github/matthias-t/postcss-positioning
-
-[deps-img]:    https://david-dm.org/matthias-t/postcss-positioning.svg
-[deps]:        https://github.com/matthias-t/postcss-positioning/blob/master/package.json
-
 [npm-img]: 	   https://img.shields.io/npm/v/postcss-positioning.svg
-[dwn-img]:     https://img.shields.io/npm/dt/postcss-positioning.svg
 [npm]:         https://npmjs.org/package/postcss-positioning
 
-[contrib-img]: https://img.shields.io/badge/contributions-welcome-brightgreen.svg
-[contrib]:     https://github.com/matthias-t/postcss-positioning/projects
 
-[donate-img]:  https://img.shields.io/badge/donate-coffee-brightgreen.svg
-[coffee]:      https://www.buymeacoffee.com/matthiast
-
-[why-img]:     https://img.shields.io/badge/start%20with-why%3F-brightgreen.svg
-
-
-## Why? ![Start With Why][why-img]
+## Why?
 
 Positioning in CSS is painful.
 
-Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties. 
+Forget about `display`, `position`, `margin`, `padding`, absolute space, and all the complicated flexbox properties.
 
 Now think about it as *spacing*. You have an element. It has a size. And you've got some space before, and some space after it. With postcss-positioning, all you need is two properties, `horizontal` and `vertical`.
 
