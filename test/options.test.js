@@ -1,13 +1,14 @@
-import reset from '../src/reset'
+import { minimal, full } from '../src/reset'
 import run from './run'
 
 describe('options', () => {
   it('reset', () => {
     return Promise.all([
-      run('', reset, {}),
-      run('', reset, { reset: true }),
+      run('', minimal, {}),
+      run('', minimal, { reset: 'minimal' }),
+      run('', full, { reset: 'full' }),
       run('', '', { reset: false }),
-      run('a {}', reset + '\na {}', {})
+      run('a {}', minimal + '\na {}', {})
     ])
   })
 })
