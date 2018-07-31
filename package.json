@@ -17,14 +17,6 @@
     },
     "homepage": "https://github.com/matthias-t/postcss-positioning",
     "dependencies": {
-        "eslint-config-logux": "^23.0.4",
-        "eslint-config-standard": "^11.0.0",
-        "eslint-plugin-import": "^2.13.0",
-        "eslint-plugin-jest": "^21.18.0",
-        "eslint-plugin-node": "^7.0.1",
-        "eslint-plugin-promise": "^3.8.0",
-        "eslint-plugin-security": "^1.4.0",
-        "eslint-plugin-standard": "^3.1.0",
         "postcss": "^7.0.1"
     },
     "main": "lib/index.js",
@@ -36,6 +28,14 @@
         "babel-preset-env": "^1.6.1",
         "eslint": "^5.2.0",
         "eslint-config-postcss": "^3.0.3",
+        "eslint-config-logux": "^23.0.4",
+        "eslint-config-standard": "^11.0.0",
+        "eslint-plugin-import": "^2.13.0",
+        "eslint-plugin-jest": "^21.18.0",
+        "eslint-plugin-node": "^7.0.1",
+        "eslint-plugin-promise": "^3.8.0",
+        "eslint-plugin-security": "^1.4.0",
+        "eslint-plugin-standard": "^3.1.0",
         "jest": "^23.4.1"
     },
     "peerDependencies": {
