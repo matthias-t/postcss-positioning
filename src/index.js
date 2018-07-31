@@ -1,10 +1,10 @@
 import postcss from 'postcss'
 import process from './process'
-import reset from './reset'
+import { full, minimal } from './reset'
 
 const isPositionDecl = node => {
   return node.type === 'decl' &&
-        ['horizontal', 'vertical', 'type'].some(prop => prop === node.prop)
+    ['horizontal', 'vertical', 'type'].some(prop => prop === node.prop)
 }
 
 const hasPositionDecl = rule => {
@@ -12,7 +12,7 @@ const hasPositionDecl = rule => {
 }
 
 const defaults = {
-  reset: true,
+  reset: 'minimal',
   warn: 'same',
   dev: false
 }
@@ -30,8 +30,13 @@ module.exports = postcss.plugin('postcss-positioning', opts => {
       }
     })
 
-    if (opts.reset) {
-      root.prepend(reset)
+    switch (opts.reset) {
+      case 'full':
+        root.prepend(full)
+        break
+      case 'minimal':
+        root.prepend(minimal)
+        break
     }
   }
 })
